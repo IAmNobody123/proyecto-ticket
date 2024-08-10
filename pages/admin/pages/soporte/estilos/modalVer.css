@@ -1,0 +1,81 @@
+/* Estilos para el modal */
+.modal-dialog {
+    max-width: 800px;
+    /* Ajusta el ancho máximo del modal según tus necesidades */
+}
+
+.modal-content {
+    border-radius: 10px;
+    /* Agrega bordes redondeados al modal */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    /* Agrega una sombra al modal */
+}
+
+.modal-header {
+    background-color: #96431c69;
+    /* Color de fondo del encabezado del modal */
+    color: #fff;
+    /* Color del texto del encabezado */
+    border-top-left-radius: 10px;
+    /* Redondea la esquina superior izquierda */
+    border-top-right-radius: 10px;
+    /* Redondea la esquina superior derecha */
+}
+
+.modal-title {
+    font-size: 24px;
+    /* Tamaño de fuente del título del modal */
+    font-weight: bold;
+    /* Negrita para el título */
+}
+
+.modal-body {
+    padding: 30px;
+    /* Agrega un espacio interno al cuerpo del modal */
+}
+
+.modal-footer {
+    border-bottom-left-radius: 10px;
+    /* Redondea la esquina inferior izquierda */
+    border-bottom-right-radius: 10px;
+    /* Redondea la esquina inferior derecha */
+}
+
+/* Estilos para los campos del modal */
+.modal-body label {
+    font-weight: bold;
+    /* Negrita para las etiquetas de los campos */
+}
+
+.modal-body input,
+.modal-body textarea {
+    border: 1px solid #ccc;
+    /* Borde para los campos de entrada */
+    border-radius: 5px;
+    /* Bordes redondeados para los campos */
+    padding: 10px;
+    /* Espacio interno para los campos */
+    width: 100%;
+    /* Ancho del 100% para los campos */
+}
+
+/* Estilos para los botones del modal */
+.modal-footer button {
+    background-color: #bd6d5acc;
+    /* Color de fondo de los botones */
+    border: none;
+    /* Sin borde para los botones */
+    color: #fff;
+    /* Color del texto de los botones */
+    padding: 10px 20px;
+    /* Espacio interno para los botones */
+    border-radius: 5px;
+    /* Bordes redondeados para los botones */
+    cursor: pointer;
+    /* Cambiar el cursor al pasar sobre los botones */
+}
+
+.modal-footer button:hover {
+    background-color: #832e18da;
+    /* Color de fondo al pasar sobre los botones */
+}

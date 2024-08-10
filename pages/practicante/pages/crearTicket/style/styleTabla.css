@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Elimina el espacio entre bordes */
+    margin: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para la tabla */
+}
+
+th, td {
+    padding: 12px; /* Espaciado interno */
+    text-align: left; /* Alineación del texto */
+    border: 1px solid #ddd; /* Borde de las celdas */
+}
+
+th {
+    background-color: #af574c; /* Color de fondo del encabezado */
+    color: white; /* Color del texto del encabezado */
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* Color de fondo para filas pares */
+}
+
+tr:hover {
+    background-color: #ddd; /* Color de fondo al pasar el mouse */
+}
+
+.btn {
+    padding: 8px 12px; /* Espaciado interno del botón */
+    margin: 5px; /* Margen entre botones */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Color de fondo del botón primario */
+    color: white; /* Color del texto del botón primario */
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Color de fondo del botón peligro */
+    color: white; /* Color del texto del botón peligro */
+}
+
+.btn:hover {
+    opacity: 0.8; /* Efecto de opacidad al pasar el mouse */
+}
