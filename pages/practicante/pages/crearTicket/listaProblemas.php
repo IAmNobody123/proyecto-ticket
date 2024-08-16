@@ -45,24 +45,24 @@ $sql = $conexion->query("select *
 
     <tbody>
         <?php
-        while ($row = $sql->fetch_object()) {
+        while ($problemaV = $sql->fetch_object()) {
             ?>
             <tr>
-                <th scope="row"><?= $row->nombre ?></th>
-                <td><?= $row->nombreProblema ?></td>
-                <td><?= $row->nombreOficina ?></td>
-                <td><?= $row->nombreSede ?></td>
+                <th scope="row"><?= $problemaV->nombre ?></th>
+                <td><?= $problemaV->nombreProblema ?></td>
+                <td><?= $problemaV->nombreOficina ?></td>
+                <td><?= $problemaV->nombreSede ?></td>
                 <td>
                     <a href="#" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#myModal"
-                        data-id-problema="<?= $row->idProblema ?>" data-nombre="<?= $row->nombre ?>"
-                        data-nombre-problema="<?= $row->nombreProblema ?>"
-                        data-descripcion="<?= $row->descripcionProblema ?>" data-nombre-oficina="<?= $row->nombreOficina ?>"
-                        data-nombre-sede="<?= $row->nombreSede ?>">
+                        data-id-problema="<?= $problemaV->idProblema ?>" data-nombre="<?= $problemaV->nombre ?>"
+                        data-nombre-problema="<?= $problemaV->nombreProblema ?>"
+                        data-descripcion="<?= $problemaV->descripcionProblema ?>" data-nombre-oficina="<?= $problemaV->nombreOficina ?>"
+                        data-nombre-sede="<?= $problemaV->nombreSede ?>">
                         Ver
                     </a>
 
                     <form action="" method="POST" style="display:inline;">
-                        <input type="hidden" name="idProblema" value="<?= $row->idProblema ?>">
+                        <input type="hidden" name="idProblema" value="<?= $problemaV->idProblema ?>">
                         <input type="hidden" name="idUsuario" value="<?= $idUsuario ?>">
                         <button type="submit" class="btn btn-outline-success" name="btnAtender">Atender</button>
                     </form>

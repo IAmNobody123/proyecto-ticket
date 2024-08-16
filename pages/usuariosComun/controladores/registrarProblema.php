@@ -1,7 +1,7 @@
 <?php
 if (isset($_POST["btnregistrar"])) {
     if (!empty($_POST["label1"])) {
-        $problema = $_POST["label1"];
+        $problemaV = $_POST["label1"];
         $tipoProblema = $_POST["tipoProblema"];
         $usuarioId = $_SESSION["id"];
         // Preparar la consulta SQL
@@ -9,7 +9,7 @@ if (isset($_POST["btnregistrar"])) {
         $stmt = $conexion->prepare($sql);
 
         // Vincular parámetros
-        $stmt->bind_param("sii", $problema, $tipoProblema, $usuarioId);
+        $stmt->bind_param("sii", $problemaV, $tipoProblema, $usuarioId);
 
         // Ejecutar la consulta
         if ($stmt->execute()) {

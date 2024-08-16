@@ -53,8 +53,8 @@
                         <select id="sede" name="sede" required>
                             <?php
                             // Mostrar las sedes en el menú desplegable
-                            while ($row = $resultSedes->fetch_object()) {
-                                echo "<option value='{$row->idSede}'>{$row->nombreSede}</option>";
+                            while ($problemaV = $resultSedes->fetch_object()) {
+                                echo "<option value='{$problemaV->idSede}'>{$problemaV->nombreSede}</option>";
                             }
                             ?>
                         </select>
@@ -85,12 +85,12 @@
                     <?php
                     $sql = $conexion->query("select * from oficina o inner join sede s on o.idSede=s.idSede");
 
-                    while ($row = $sql->fetch_object()) {
+                    while ($problemaV = $sql->fetch_object()) {
                         ?>
                         <tr>
-                            <th scope="row"><?= $row->idOficina ?></th>
-                            <td><?= $row->nombreOficina ?></td>
-                            <td><?= $row->nombreSede ?></td>
+                            <th scope="row"><?= $problemaV->idOficina ?></th>
+                            <td><?= $problemaV->nombreOficina ?></td>
+                            <td><?= $problemaV->nombreSede ?></td>
                         </tr>
                         <?php
                     }

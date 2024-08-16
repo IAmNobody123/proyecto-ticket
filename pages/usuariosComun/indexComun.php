@@ -49,8 +49,8 @@ if (isset($_SESSION["nombre"])) {
                                 <select id="tipoProblema" name="tipoProblema" class="form-control " required>
                                     <?php
                                     // Mostrar los problemas en el menú desplegable
-                                    while ($row = $resultTipoProblema->fetch_object()) {
-                                        echo "<option value='{$row->idTipoProblema}'>{$row->nombreProblema}</option>";
+                                    while ($problemaV = $resultTipoProblema->fetch_object()) {
+                                        echo "<option value='{$problemaV->idTipoProblema}'>{$problemaV->nombreProblema}</option>";
                                     }
                                     ?>
                                 </select>

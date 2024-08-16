@@ -78,11 +78,11 @@
                     <?php
                     $sql = $conexion->query("select * from rol");
 
-                    while ($row = $sql->fetch_object()) {
+                    while ($problemaV = $sql->fetch_object()) {
                         ?>
                         <tr>
-                            <th scope="row"><?= $row->idRol ?></th>
-                            <td><?= $row->nombreRol ?></td>
+                            <th scope="row"><?= $problemaV->idRol ?></th>
+                            <td><?= $problemaV->nombreRol ?></td>
                         </tr>
                         <?php
                     }

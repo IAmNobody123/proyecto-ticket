@@ -43,13 +43,15 @@ body {
     background: #55142f;
     letter-spacing: 1px;
 }
-
+ul{
+    padding-left: none;
+}
 nav ul {
+    padding-left: 0;
     background-color: #681935;
     height: 100%;
     width: 100%;
     list-style: none;
-
 }
 
 nav ul li {

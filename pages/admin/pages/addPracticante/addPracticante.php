@@ -96,8 +96,8 @@
                                 <select id="rol" name="roles" required>
                                     <?php
                                     // Mostrar las sedes en el menú desplegable
-                                    while ($row = $resultRol->fetch_object()) {
-                                        echo "<option value='{$row->idRol}'>{$row->nombreRol}</option>";
+                                    while ($problemaV = $resultRol->fetch_object()) {
+                                        echo "<option value='{$problemaV->idRol}'>{$problemaV->nombreRol}</option>";
                                     }
                                     ?>
                                 </select>
@@ -177,18 +177,18 @@
 
                     if ($sql->num_rows > 0) {
                         $numero = 1;
-                        while ($row = $sql->fetch_object()) {
+                        while ($problemaV = $sql->fetch_object()) {
                             ?>
                             <tr>
                                 <th scope="row"><?= $numero; ?></th>
                                 <td>
-                                    <img height="90" src="<?= $row->direccionImagen ?>" alt="">
+                                    <img height="90" src="<?= $problemaV->direccionImagen ?>" alt="">
                                 </td>
-                                <td><?= $row->nombre ?></td>
-                                <td><?= $row->idLogin ?></td>
+                                <td><?= $problemaV->nombre ?></td>
+                                <td><?= $problemaV->idLogin ?></td>
                                 <td class="password-cell">
                                     <div class="password-field">
-                                        <input type="password" id="password<?= $row->idUsuario ?>" value='<?= $row->password ?>'
+                                        <input type="password" id="password<?= $problemaV->idUsuario ?>" value='<?= $problemaV->password ?>'
                                             readonly>
                                         <span class="toggle-password">
                                             <i class="fas fa-eye"></i>

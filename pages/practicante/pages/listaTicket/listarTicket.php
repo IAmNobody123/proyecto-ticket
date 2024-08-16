@@ -46,18 +46,18 @@ if (isset($_SESSION["nombre"])) {
 
             <tbody>
                 <?php
-                while ($row = $verTickets->fetch_object()) {
+                while ($problemaV = $verTickets->fetch_object()) {
                     ?>
                     <tr>
-                        <th scope="row"><?= $row->idTicket ?></th>
-                        <td><?= $row->fecha ?></td>
-                        <td><?= $row->hora ?></td>
-                        <td><?= $row->nombreProblema ?></td>
+                        <th scope="row"><?= $problemaV->idTicket ?></th>
+                        <td><?= $problemaV->fecha ?></td>
+                        <td><?= $problemaV->hora ?></td>
+                        <td><?= $problemaV->nombreProblema ?></td>
                         <td>
                             <a href="#" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#myModal"
-                                data-id-problema="<?= $row->idProblema ?>" data-nombre="<?= $row->idTicket ?>"
-                                data-nombre-problema="<?= $row->fecha ?>" data-descripcion="<?= $row->hora ?>"
-                                data-nombre-oficina="<?= $row->nombreProblema ?>" data-nombre-sede="<?= $row->nombre ?>">
+                                data-id-problema="<?= $problemaV->idProblema ?>" data-nombre="<?= $problemaV->idTicket ?>"
+                                data-nombre-problema="<?= $problemaV->fecha ?>" data-descripcion="<?= $problemaV->hora ?>"
+                                data-nombre-oficina="<?= $problemaV->nombreProblema ?>" data-nombre-sede="<?= $problemaV->nombre ?>">
                                 registrar atencion
                             </a>
 

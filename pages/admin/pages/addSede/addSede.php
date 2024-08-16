@@ -79,12 +79,12 @@
                     <?php
                     $sql = $conexion->query("select * from sede");
 
-                    while ($row = $sql->fetch_object()) {
+                    while ($problemaV = $sql->fetch_object()) {
                         ?>
                         <tr>
-                            <th scope="row"><?= $row->idSede ?></th>
-                            <td><?= $row->nombreSede ?></td>
-                            <td><?= $row->lugarReferencia ?></td>
+                            <th scope="row"><?= $problemaV->idSede ?></th>
+                            <td><?= $problemaV->nombreSede ?></td>
+                            <td><?= $problemaV->lugarReferencia ?></td>
                         </tr>
                         <?php
                     }
