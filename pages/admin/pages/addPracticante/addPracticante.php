@@ -1,3 +1,11 @@
+<?php
+session_start();
+include ("../../../../conexion/conexion.php");
+if (isset($_SESSION["nombre"])) {
+   $usuarioName = $_SESSION["nombre"];
+   $usuarioId = $_SESSION["id"];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -220,5 +228,12 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 </body>
+
+</html>
+<?php
+} else {
+   header("Location: ../../../../index.php");
+}
+?>
 
 </html>

@@ -1,3 +1,10 @@
+<?php
+session_start();
+include ("../../conexion/conexion.php");
+if (isset($_SESSION["nombre"])) {
+   $usuarioName = $_SESSION["nombre"];
+   $usuarioId = $_SESSION["id"];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +31,6 @@
                 </a>
                 <ul class="feat-show">
                     <li><a href="pages/soporte/indexSoporte.php">soporte</a> </li>
-                    <li><a href="pages/addPracticante/addPracticante.php">practicante</a> </li>
                     <li><a href="pages/addSede/addSede.php">sede</a></li>
                     <li><a href="pages/addOficina/addOficina.php">oficina</a></li>
                     <li><a href="pages/addRoll/addRoll.php">cargo</a></li>
@@ -41,3 +47,9 @@
 </body>
 
 </html>
+
+<?php
+} else {
+   header("Location: ../../index.php");
+}
+?>

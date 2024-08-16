@@ -1,3 +1,10 @@
+<?php
+session_start();
+include ("../../../../conexion/conexion.php");
+if (isset($_SESSION["nombre"])) {
+   $usuarioName = $_SESSION["nombre"];
+   $usuarioId = $_SESSION["id"];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -115,3 +122,8 @@
 </body>
 
 </html>
+<?php
+} else {
+   header("Location: ../../../../index.php");
+}
+?>
