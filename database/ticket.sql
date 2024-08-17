@@ -175,7 +175,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idUsuario`, `nombre`, `idLogin`, `password`, `tareaAsignada`, `estado`, `direccionImagen`, `idOficina`, `idRol`) VALUES
-(1, '', 'admin', 'admin', 'libre', 'activo', NULL, 1, 1),
+(1, '', 'admin', 'admin', 'libre', 'activo', NULL, 1, 1);
 --
 -- Índices para tablas volcadas
 --

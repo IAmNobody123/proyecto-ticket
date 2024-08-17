@@ -39,7 +39,7 @@ if (isset($_SESSION["nombre"])) {
                         <li><a href="../../addOficina/addOficina.php">oficina</a></li>
                         <li><a href="../../addPracticante/addPracticante.php">Rol</a> </li>
                         <li><a href="../../addRoll/addRoll.php">cargo</a></li>
-                        <li><a href="layouts/ticketsResueltos.php">Tickets Resueltos</a></li>
+                        <li><a href="ticketsResueltos.php">Tickets Resueltos</a></li>
                         <li><a href="../indexSoporte.php">Problemas registrados</a></li>
                     </ul>
                 </li>

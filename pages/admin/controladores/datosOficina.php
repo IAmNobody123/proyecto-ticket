@@ -2,7 +2,7 @@
 require '../../../conexion/conexion.php'; // Asegúrate de que esta ruta es correcta
 
 // Consulta SQL para obtener los datos
-$sql = "CALL SP_CANTIDADTIPOPROBLEMA";
+$sql = "CALL SP_CANTIDAD_OFICINAS";
 
 // Ejecutar la consulta
 $result = $conexion->query($sql);
