@@ -1,7 +1,7 @@
 <?php
 
 // Obtener las sedes
-$sqlPracticantes = "SELECT idUsuario, nombre FROM usuario where  idRol = 2";
+$sqlPracticantes = "SELECT idUsuario, nombre FROM usuario where  idRol = 2 and estado ='activo'";
 $resultPracticantes = $conexion->query($sqlPracticantes);
 
 if ($resultPracticantes === false) {

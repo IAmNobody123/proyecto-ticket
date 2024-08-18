@@ -117,7 +117,7 @@ if (isset($_SESSION["nombre"])) {
                                     <?php
                                     // Mostrar las sedes en el menú desplegable
                                     while ($problemaV = $resultPracticantes->fetch_object()) {
-                                        echo "<option value='{$problemaV->idUsuario}'>{$problemaV->nombre}, {$problemaV->idUsuario}</option>";
+                                        echo "<option value='{$problemaV->idUsuario}'>{$problemaV->nombre}</option>";
                                         $valor = $idUsuario;
                                     }
                                     echo $problemaV;

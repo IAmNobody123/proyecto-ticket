@@ -1,24 +1,23 @@
 <?php
-$sqlQuery = "SELECT * FROM usuario WHERE 1=1";
+$sqlQuery = "SELECT * FROM usuario WHERE estado ='activo' ";
 
 if (isset($_POST["btnFiltrar"])) {
     if ($_POST["oficinaS"] != '') {
         $nroOficina = intval($_POST['oficinaS']);
-        $sqlQuery .= ' and idOficina= ' . $nroOficina;
+        $sqlQuery .= ' AND idOficina = ' . $nroOficina;
     }
-    if($_POST["rolS"] != ''){
+    if ($_POST["rolS"] != '') {
         $nroRol = intval($_POST['rolS']);
-        $sqlQuery .= ' and idRol= '. $nroRol;
-        
+        $sqlQuery .= ' AND idRol = ' . $nroRol;
     }
-
 }
 
-// Para depurar
-
+// Ejecutar la consulta
 $sql = $conexion->query($sqlQuery);
 
+// Verificar si la consulta se ejecutó correctamente
 if (!$sql) {
     echo "Error en la consulta: " . $conexion->error; // Para depurar
+    $sql = null; // Asegúrate de que $sql sea null si hay un error
 }
 ?>
