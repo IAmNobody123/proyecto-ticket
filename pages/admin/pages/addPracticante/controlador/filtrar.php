@@ -10,6 +10,11 @@ if (isset($_POST["btnFiltrar"])) {
         $nroRol = intval($_POST['rolS']);
         $sqlQuery .= ' AND idRol = ' . $nroRol;
     }
+    echo "<script>Swal.fire({
+        icon: 'success',
+        title: 'Tabla actualizada',
+        text: 'la tabla fue actualizada!!'
+    });</script>";
 }
 
 // Ejecutar la consulta

@@ -3,82 +3,73 @@ body {
 }
 
 .crud {
-    margin-left: 240px;
+    margin-left: 245px;
     padding: 20px;
 }
 
-.top-bar {
-    margin-left: 250px;
-    padding: 25px;
-}
 
 .boxshadow {
     color: black;
-    padding: 15px;
+    padding: 5px;
     box-shadow: 0 0 10px rgba(32, 31, 31, 0.5),
         0 0 20px rgba(0, 0, 0, 0.2) inset;
+
 }
 
 .top-bar {
-    background-color: #3b5998;
-    /* Color de fondo similar al de Facebook */
+    margin-left: 245px;
+    padding: 25px;
+    background-color: #333;
+    border-left: 1px solid #000;
     color: white;
     padding: 10px;
     text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 30px;
 }
 
 .boxshadow {
     background-color: #fff;
-    /* Fondo del contenedor blanco */
     border-radius: 50%;
-    /* Forma circular */
-    width: 40px;
-    /* Tamaño del contenedor */
-    height: 40px;
+    width: 50px;
+    height: 50px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    /* Sombra suave */
 }
 
 .boxshadow img {
-    width: 30px;
-    /* Tamaño de la imagen dentro del círculo */
-    height: 30px;
-    border-radius: 50%;
-    /* Forma circular para la imagen */
+    width: 40px;
+    height: 40px;
+    border-radius: 20%;
 }
 
 .dropdown-menu {
+    text-align: center;
     display: none;
-    /* Por defecto, el menú está oculto */
     position: absolute;
     top: 50px;
-    /* Posición debajo del botón */
     right: 10px;
-    /* Alineación a la derecha */
     background-color: #fff;
-    /* Fondo blanco */
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    /* Sombra suave */
     z-index: 1000;
-    /* Asegura que el menú esté sobre otros elementos */
 }
 
 .dropdown-menu a {
     display: block;
     color: #333;
     text-decoration: none;
-    padding: 5px 0;
+    padding: 5px 30px;
 }
 
 .dropdown-menu a:hover {
     background-color: #f0f0f0;
-    /* Color de fondo al pasar el ratón */
 }
 
 
@@ -98,9 +89,7 @@ body {
 
 .password-field input:focus {
     outline: none;
-    /* Elimina el contorno que aparece al hacer clic */
     box-shadow: none;
-    /* Elimina la sombra del borde */
 }
 
 #password {
@@ -115,16 +104,114 @@ body {
 
 .password-cell {
     width: 150px;
-    /* Ancho fijo de la celda */
     max-width: 200px;
-    /* Ancho máximo de la celda */
     min-width: 200px;
-    /* Ancho mínimo de la celda */
     white-space: nowrap;
-    /* Evita que el texto se envuelva */
     align-items: center;
 }
 
 span {
     color: white;
+}
+
+.mantenimiento {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    border-left-color: transparent;
+    height: 30px;
+    justify-content: center;
+}
+
+.tituloM {
+
+    color: #e6e6e6;
+    padding-left: 25px;
+    font-size: 16px;
+    padding-right: 20px;
+    padding-top: 10px;
+}
+
+nav ul {
+    padding-left: 0;
+}
+
+#welcomeAdm {
+    color: white;
+    font-size: 25px;
+    padding-left: 42px;
+}
+
+.textoF {
+    font-weight: bold;
+    padding: 5px;
+}
+
+.entradaT{
+    width: 180px;
+    padding-left: 15px;
+    border: 1px solid black;
+    border-radius: 20px;
+    height: 50px;
+}
+.camposF{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+select {
+    width: 200px;
+    padding: 10px; 
+    border: 2px solid #8f9197; 
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    appearance: none;
+    outline: none; 
+    cursor: pointer;
+}
+
+select:focus {
+    border-color: #515b66;
+    box-shadow: 0 0 5px rgba(115, 130, 146, 0.5); 
+}
+
+option {
+    padding: 15px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+}
+
+.custom-select {
+    position: relative;
+    display: inline-block;
+}
+
+.custom-select::after {
+    content: '▼'; 
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%); 
+    pointer-events: none; 
+}
+.entradaT:invalid{
+    border-color:red;
+
+}
+.entradaT:valid{
+    border: 2px solid;
+    border-color: green;
+}
+
+.nombreU{
+    width: 300px;
+    display: block;
+}
+
+#subirArchivo{
+    padding:10px;
+    font-size: 15px;
+    margin: 5px;
+    border: 1px solid;
 }

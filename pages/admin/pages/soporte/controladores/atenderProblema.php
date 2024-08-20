@@ -35,7 +35,7 @@ if (isset($_POST["submit"])) {
             Swal.fire({
                 icon: 'success',
                 title: 'Atención aceptada',
-                text: 'La atención se ha aceptado correctamente.'
+                text: 'El problema fue designado con exito'
             });
         </script>";
         } else {

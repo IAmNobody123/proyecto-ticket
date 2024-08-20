@@ -135,3 +135,25 @@ h1 {
     display: flex;
     justify-content: center;
 }
+.mantenimiento {
+    display: flex;
+    align-items: center;
+    background-color: #55142f;
+    border-left-color: transparent;
+    height: 30px;
+    justify-content: center;
+  }
+  
+  .tituloM {
+  
+    color: #e6e6e6;
+    padding-left: 25px;
+    font-size: 16px;
+    padding-right: 20px;
+    padding-top: 10px;
+  }
+  
+  nav ul{
+    padding-left: 0;
+  }
+  

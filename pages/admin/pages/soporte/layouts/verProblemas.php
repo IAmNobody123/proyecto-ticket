@@ -46,7 +46,7 @@ include "../controladores/practicantes.php";
                 <td>
                     <a href="#" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#modalDetalle"
                         data-id-problema="<?= $problemaV->idProblema ?>" data-nombre="<?= $problemaV->nombreProblema ?>">
-                        <!-- Cambié aquí para mostrar el nombre del problema -->
+                        
                         Ver
                     </a>
                     <a class="btn btn-outline-success">Designar</a>
