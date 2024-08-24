@@ -12,8 +12,8 @@ if (isset($_SESSION["nombre"])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Cargo</title>
-        <link rel="stylesheet" href="./addRoll.css?c">
-        <link rel="styleSheet" href="../stylesGeneral.css?s">
+        <link rel="styleSheet" href="../stylesGeneral.css?k">
+        <link rel="stylesheet" href="./addRoll.css?k">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -59,30 +59,31 @@ if (isset($_SESSION["nombre"])) {
         </div>
 
         <div class="crud">
-            <nav class="navbar navbar-ligth justify-content-center fs-3 mb-5">
+            <h1 class="title">
                 Ingrese un nuevo cargo
-            </nav>
+            </h1>
 
             <div class="container justify-content-center">
                 <form action="" method="post">
-                    <div class="row">
-                        <div class="col-5">
+                    <div class="col">
+                        <div class="col-3">
                             <label for="" class="form-label">
                                 Ingresar el nombre del nuevo cargo:
                             </label>
+                            <br>
                             <input type="text" required class="form-control" name="first-label" placeholder="practicante">
 
                         </div>
 
                     </div>
-                    <div>
+                    <div class="col">
                         <button type="submit" class="btn btn-success" name="submitRoll">Agregar</button>
                     </div>
                 </form>
             </div>
 
             <div class="container-table">
-                <table class="table table-hover text-center">
+                <table class="transparent-table">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>

@@ -41,7 +41,7 @@ if (empty($_POST["btnIngresar"])) {
             header("location:pages/usuariosComun/indexComun.php");
         } else {
             //si los campos no son correctos nos devuelve una advertencia
-            echo '<div class="alert alert-danger"> LOS CAMPOS ESTAN INCORRECTOS</div>';
+            echo '<div class="alert alert-danger text-center"> LOS CAMPOS ESTAN INCORRECTOS</div>';
         }
     }
 }

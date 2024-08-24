@@ -99,6 +99,7 @@ nav ul li a span {
 }
 
 
+
 nav ul li a:hover span {
   transform: translateY(-50%) rotate(-180deg);
 }
@@ -108,14 +109,33 @@ span {
 }
 
 #titulo {
+  margin: 0;
   padding: 20px;
-  margin-left: 280px;
   text-align: center;
 }
-
+/* --------------------------------- */
+.pantalla {
+  position: relative; 
+  margin-left: 280px;
+  overflow: hidden; 
+}
+.pantalla::before {
+  content: ''; 
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('./pages/fondoC.png');
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0.35; /* Cambiar para la transparencia (0.0 a 1.0) */
+  z-index: -1;
+}
+/* --------------------------------- */
 .contenido {
   padding: 20px;
-  margin-left: 280px;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -145,7 +165,7 @@ span {
   grid-row-start: 2;
   grid-column-start: 1;
 }
-
+/* --------------------------------- */
 .mantenimiento {
   display: flex;
   align-items: center;
@@ -157,9 +177,10 @@ span {
 }
 
 .tituloM {
-
   color: #e6e6e6;
-  padding-left: 25px;
   font-size: 16px;
   padding-right: 20px;
+  margin: 0;
 }
+
+

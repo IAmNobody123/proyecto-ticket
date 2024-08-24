@@ -7,7 +7,6 @@ body {
     padding: 20px;
 }
 
-
 .boxshadow {
     color: black;
     padding: 5px;
@@ -135,7 +134,7 @@ span {
 nav ul {
     padding-left: 0;
 }
-
+/* --------------------------------- */
 #welcomeAdm {
     color: white;
     font-size: 25px;
@@ -146,15 +145,20 @@ nav ul {
     font-weight: bold;
     padding: 5px;
 }
-
-.entradaT{
+.title{
+    color: black ;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.entradaT {
     width: 180px;
     padding-left: 15px;
     border: 1px solid black;
     border-radius: 20px;
     height: 50px;
 }
-.camposF{
+
+.camposF {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -162,22 +166,22 @@ nav ul {
 
 select {
     width: 200px;
-    padding: 10px; 
-    border: 2px solid #8f9197; 
+    padding: 10px;
+    border: 2px solid #8f9197;
     border-radius: 5px;
     background-color: #f8f9fa;
     appearance: none;
-    outline: none; 
+    outline: none;
     cursor: pointer;
 }
 
 select:focus {
     border-color: #515b66;
-    box-shadow: 0 0 5px rgba(115, 130, 146, 0.5); 
+    box-shadow: 0 0 5px rgba(115, 130, 146, 0.5);
 }
 
 option {
-    padding: 15px; 
+    padding: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 
 }
@@ -188,30 +192,119 @@ option {
 }
 
 .custom-select::after {
-    content: '▼'; 
+    content: '▼';
     position: absolute;
     right: 10px;
     top: 50%;
-    transform: translateY(-50%); 
-    pointer-events: none; 
+    transform: translateY(-50%);
+    pointer-events: none;
 }
-.entradaT:invalid{
-    border-color:red;
+
+.entradaT:invalid {
+    border-color: red;
 
 }
-.entradaT:valid{
+
+.entradaT:valid {
     border: 2px solid;
     border-color: green;
+    background-color: rgb(124, 196, 124);
+    color: blue;
+    font-weight: bold;
+    
 }
 
-.nombreU{
+.nombreU {
     width: 300px;
     display: block;
 }
 
-#subirArchivo{
-    padding:10px;
+#subirArchivo {
+    padding: 10px;
     font-size: 15px;
     margin: 5px;
     border: 1px solid;
+}
+/* -------------------------- */
+
+.crud {
+    position: relative;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    min-height: 550px;
+
+}
+
+.crud::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../fondoC.png');
+    background-size: contain;
+    background-position: center;
+    opacity: 0.7;
+    z-index: -1;
+    background-repeat: no-repeat;
+}
+/* -------------------------- */
+
+.form-label {
+    font-weight: bolder;
+}
+
+#oficina {
+    border: 1px solid black;
+    font-weight: bold;
+}
+
+#rolS {
+    border: 1px solid black;
+    font-weight: 600;
+}
+
+option {
+    font-weight: bold;
+}
+/* -------------------------- */
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.9);
+    font-weight: bold;
+}
+
+td,
+th {
+    border: 2px ridge #866262 !important;
+    padding: 8px;
+}
+
+label {
+    font-weight: bold;
+    padding: 5px;
+}
+
+.col {
+    text-align: center;
+    background-color: transparent;
+}
+
+.transparent-table {
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.transparent-table th,
+.transparent-table td {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+thead{
+    background: linear-gradient(to right, #c548484d, #8a1919);
 }

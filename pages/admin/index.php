@@ -15,7 +15,7 @@ if (isset($_SESSION["nombre"])) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
-        <link rel="styleSheet" href="pages/stylesGeneral.css?3">
+        <link rel="styleSheet" href="pages/stylesGeneral.css?6">
         <link rel="styleSheet" href="./styleIndex.css?6">
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
     </head>
@@ -28,7 +28,8 @@ if (isset($_SESSION["nombre"])) {
                     <a href="./pages/addPracticante/addPracticante.php">nuevo practicante</a>
                 </li>
                 <li>
-                    <div class="mantenimiento"><h1 class="tituloM">mantenimiento</h1>
+                    <div class="mantenimiento">
+                        <h1 class="tituloM">mantenimiento</h1>
                         <span class="fas fa-caret-down"></span>
                     </div>
                 <li><a href="pages/soporte/indexSoporte.php">soporte</a> </li>
@@ -46,27 +47,29 @@ if (isset($_SESSION["nombre"])) {
                 <img src="pages/addPracticante/fotos/<?= $usuarioId ?>.png" alt="">
             </div>
             <div class="dropdown-menu" id="dropdownMenu">
-                <a href="../addPracticante/controlador/cerrarSesion.php">Cerrar sesión</a>
+                <a href="pages/addPracticante/controlador/cerrarSesion.php">Cerrar sesión</a>
             </div>
         </div>
 
-        <h1 id="titulo">Graficas de soporte tecnico</h1>
+        <div class="pantalla">
+            <h1 id="titulo">Graficas de soporte tecnico</h1>
 
-        <div class="contenido">
-            <div class="div1">
-                <canvas class="grafica" width="auto" height="auto"></canvas>
-            </div>
-            <div class="div2">
-                <canvas class="grafica1" width="auto" height="auto"></canvas>
-            </div>
-            <div class="div3">
-                <canvas class="grafica2" width="auto" height="150"></canvas>
+            <div class="contenido">
+                <div class="div1">
+                    <canvas class="grafica" width="auto" height="auto"></canvas>
+                </div>
+                <div class="div2">
+                    <canvas class="grafica1" width="auto" height="auto"></canvas>
+                </div>
+                <div class="div3">
+                    <canvas class="grafica2" width="auto" height="150"></canvas>
 
+                </div>
             </div>
         </div>
 
         <script src="pages/addPracticante/controlador/eventoClick.js"></script>
-        
+
         <script type="text/javascript" src="controladores/graficas.js"></script>
         <script type="text/javascript" src="controladores/grafica2.js"></script>
         <script type="text/javascript" src="controladores/grafica3.js"></script>

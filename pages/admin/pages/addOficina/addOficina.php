@@ -12,11 +12,12 @@ if (isset($_SESSION["nombre"])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>OFICINAS</title>
-        <link rel="styleSheet" href="./addOficina.css?s">
-        <link rel="styleSheet" href="../stylesGeneral.css?s">
+        <link rel="styleSheet" href="../stylesGeneral.css?b">
+        <link rel="styleSheet" href="./addOficina.css?b">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     </head>
 
@@ -60,41 +61,34 @@ if (isset($_SESSION["nombre"])) {
         </div>
 
         <div class="crud">
-            <nav class="navbar navbar-ligth justify-content-center fs-3 mb-5">
-                Ingrese una nueva oficina
+            <nav class="navbar navbar-light justify-content-center fs-3 mb-5">
+                <strong>Ingrese una nueva oficina</strong>
             </nav>
 
-            <div class="container justify-content-center">
-                <form action="" method="post">
-                    <div class="row">
-                        <div class="col">
-                            <label for="" class="form-label">
-                                Ingresar el nombre de la sede:
-                            </label>
-                            <select id="sede" name="sede" required>
-                                <?php
-                                // Mostrar las sedes en el menú desplegable
-                                while ($problemaV = $resultSedes->fetch_object()) {
-                                    echo "<option value='{$problemaV->idSede}'>{$problemaV->nombreSede}</option>";
-                                }
-                                ?>
-                            </select>
-                        </div>
-                        <div class="col">
-                            <label for="" class="form-label">
-                                Ingresar el nombre de la oficina:
-                            </label>
-                            <input type="text" required class="form-control" name="second-label" placeholder="OTI">
-                        </div>
+            <div class="container">
+                <form action="" method="post" class="d-flex justify-content-between align-items-center">
+                    <div class="form-group me-3">
+                        <label for="sede" class="form-label">Ingresar el nombre de la sede:</label>
+                        <select id="sede" name="sede" class="form-select" required>
+                            <?php
+                            // Mostrar las sedes en el menú desplegable
+                            while ($problemaV = $resultSedes->fetch_object()) {
+                                echo "<option value='{$problemaV->idSede}'>{$problemaV->nombreSede}</option>";
+                            }
+                            ?>
+                        </select>
                     </div>
-                    <div>
-                        <button type="submit" class="btn btn-success" name="submit">Agregar</button>
+                    <div class="form-group me-3">
+                        <label for="nombreOficina" class="form-label">Ingresar el nombre de la oficina:</label>
+                        <input type="text" required class="form-control" name="second-label" id="nombreOficina"
+                            placeholder="por ejemplo: OTI">
                     </div>
+                    <button type="submit" class="btn btn-success">Agregar</button>
                 </form>
             </div>
 
             <div class="container-table">
-                <table class="table table-hover text-center">
+                <table >
                     <thead>
                         <tr>
                             <th scope="col">nro</th>

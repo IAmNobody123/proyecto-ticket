@@ -15,7 +15,7 @@ if (isset($_SESSION["nombre"])) {
         <title>Agregar Practicante</title>
         <link rel="styleSheet" href="../../styleIndex.css?1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
-        <link rel="stylesheet" href="./addPracticante.css?y">
+        <link rel="stylesheet" href="./addPracticante.css?j">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
@@ -66,12 +66,12 @@ if (isset($_SESSION["nombre"])) {
 
         <!-- Todo el contenido-->
         <div class="crud">
-            <h1 class="text-center text-secondary font-weigt-bold p-4">Agregar practicantes</h1>
+            <h1 class="title">Agregar usuarios</h1>
 
             <div class="p-3 table-responsive">
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-secondary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Agregar nuevo practicante
+                    Agregar un nuevo usuario
                 </button>
                 <?php
                 require 'controlador/registrar.php';
@@ -104,7 +104,7 @@ if (isset($_SESSION["nombre"])) {
                                     <div class="camposF">
                                         <label class="textoF">Crea el ID del login del usuario</label>
                                         <input type="text" class="entradaT" name="idUsuario"
-                                            placeholder="por ejemplo tuBobito" minlength="6" required>
+                                            placeholder="por ejemplo elmotivo" minlength="6" required>
                                     </div>
 
                                     <br>
@@ -161,7 +161,7 @@ if (isset($_SESSION["nombre"])) {
                 <!-- formulario para fitrar -->
                 <form method="POST" class="mb-3" action="">
                     <div class="row">
-                        <div class="col">
+                        <div class="col col-4">
                             <label for="oficina">Oficina:</label>
                             <select name="oficinaS" id="oficina" class="form-select">
                                 <option value="">Todas</option>
@@ -175,7 +175,7 @@ if (isset($_SESSION["nombre"])) {
                                 ?>
                             </select>
                         </div>
-                        <div class="col">
+                        <div class="col col-4">
                             <label for="rolS">Rol:</label> <!-- Cambiado para que coincida con el nuevo ID -->
                             <select name="rolS" id="rolS" class="form-select"> <!-- Cambiado el ID a 'rolS' -->
                                 <option value="">Todos</option>
@@ -189,13 +189,16 @@ if (isset($_SESSION["nombre"])) {
                                 ?>
                             </select>
                         </div>
+                        <div class="col col-3">
+                        <input type="submit" value="Filtrar" class="btn btn-primary mt-4" name="btnFiltrar">
+                        </div>
                     </div>
-                    <input type="submit" value="Filtrar" class="btn btn-primary mt-4" name="btnFiltrar">
+                    
                 </form>
 
                 <!-- trabla para ver los usuarios -->
-                <table class="table table-hover table-bordered text-center align-middle">
-                    <thead class="table-secondary text-white">
+                <table class="transparent-table">
+                    <thead id="cabecera">
                         <tr>
                             <th scope="col">NRO</th>
                             <th scope="col">FOTO</th>
@@ -230,7 +233,7 @@ if (isset($_SESSION["nombre"])) {
                                     <td>
                                         <form method="POST" action="" id="formEliminar<?= $problemaV->idUsuario ?>">
                                             <input type="hidden" name="idUsuario" value="<?= $problemaV->idUsuario ?>">
-                                            <a href="" class="btn btn-warning">editar</a>
+                                            <!-- <a href="" class="btn btn-warning">editar</a> -->
                                             <input type="button" value="Eliminar" class="btn btn-danger"
                                                 onclick="confirmarEliminacion(<?= $problemaV->idUsuario ?>)">
                                         </form>

@@ -12,9 +12,9 @@ if (isset($_SESSION["nombre"])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Atender tareas</title>
-        <link rel="styleSheet" href="indexSoporte.css?q">
         <link rel="styleSheet" href="estilos/modalVer.css?g">
-        <link rel="styleSheet" href="../stylesGeneral.css?p">
+        <link rel="styleSheet" href="../stylesGeneral.css?w">
+        <link rel="styleSheet" href="indexSoporte.css?p">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -59,7 +59,7 @@ if (isset($_SESSION["nombre"])) {
             </div>
         </div>
 
-        <div class="contenido">
+        <div class="crud">
             <?php
             include "../../../../conexion/conexion.php";
             include "controladores/practicantes.php";
@@ -67,7 +67,7 @@ if (isset($_SESSION["nombre"])) {
             ?>
 
             <h1>Designar Tarea</h1>
-            <table class="table table-hover table-bordered text-center align-middle">
+            <table class="transparent-table">
                 <thead class="table-secondary text-white">
                     <tr>
                         <th scope="col">Nombre del Solicitante</th>

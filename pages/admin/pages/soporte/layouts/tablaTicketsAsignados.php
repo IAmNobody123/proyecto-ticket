@@ -12,8 +12,8 @@ if (isset($_SESSION["nombre"])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <link rel="styleSheet" href="../indexSoporte.css?a">
-        <link rel="styleSheet" href="../../stylesGeneral.css?p">
+        <link rel="styleSheet" href="../indexSoporte.css?s">
+        <link rel="styleSheet" href="../../stylesGeneral.css?s">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -35,7 +35,7 @@ if (isset($_SESSION["nombre"])) {
                     <a href="../../../index.php" class="feat-btn">inicio</a>
                 </li>
                 <li>
-                    <a href="../addPracticante/addPracticante.php">nuevo practicante</a>
+                    <a href="../../addPracticante/addPracticante.php">nuevo practicante</a>
                 </li>
                 <li>
                     <div class="mantenimiento">
@@ -60,13 +60,13 @@ if (isset($_SESSION["nombre"])) {
                 <img src="../../addPracticante/fotos/<?= $usuarioId ?>.png" alt="">
             </div>
             <div class="dropdown-menu" id="dropdownMenu">
-                <a href="../addPracticante/controlador/cerrarSesion.php">Cerrar sesión</a>
+                <a href="../controladores/cerrarSesion.php">Cerrar sesión</a>
             </div>
         </div>
 
-        <div class="contenido">
+        <div class="crud">
             <h1>Ticket designados a los practicantes</h1>
-            <table class="table table-hover table-bordered text-center  align-middle">
+            <table class="transparent-table">
                 <thead class="table-secondary text-white">
                     <tr>
                         <th scope="col">numero de ticket</th>
@@ -102,6 +102,6 @@ if (isset($_SESSION["nombre"])) {
     </html>
     <?php
 } else {
-    header("Location: ../../index.php");
+    header("Location: ../../../../../index.php");
 }
 ?>
