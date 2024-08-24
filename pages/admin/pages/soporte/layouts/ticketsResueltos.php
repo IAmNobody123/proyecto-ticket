@@ -13,7 +13,7 @@ if (isset($_SESSION["nombre"])) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <link rel="styleSheet" href="../indexSoporte.css?s">
-        <link rel="styleSheet" href="../../stylesGeneral.css?s">
+        <link rel="styleSheet" href="../../stylesGeneral.css?t">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -32,22 +32,22 @@ if (isset($_SESSION["nombre"])) {
             <div class="text">Menu</div>
             <ul>
                 <li>
-                    <a href="../../../index.php" class="feat-btn">inicio</a>
+                    <a href="../../../index.php" class="feat-btn">Inicio</a>
                 </li>
                 <li>
-                    <a href="../../addPracticante/addPracticante.php">nuevo practicante</a>
+                    <a href="../../addPracticante/addPracticante.php">Nuevo usuario</a>
                 </li>
                 <li>
                     <div class="mantenimiento">
                         <h1 class="tituloM">mantenimiento</h1>
                         <span class="fas fa-caret-down"></span>
                     </div>
-                <li><a href="../indexSoporte.php">Problemas registrados</a></li>
+                <li><a href="../indexSoporte.php">Tickets recibidos</a></li>
                 <li><a href="tablaTicketsAsignados.php">Tickets Asignados</a> </li>
+                <li class="paginaActual"><a href="#">Tickets Resueltos</a></li>
                 <li><a href="../../addSede/addSede.php">Sede</a> </li>
-                <li><a href="../../addOficina/addOficina.php">oficina</a></li>
-                <li><a href="../../addPracticante/addPracticante.php">Rol</a> </li>
-                <li><a href="../../addRoll/addRoll.php">cargo</a></li>
+                <li><a href="../../addOficina/addOficina.php">Oficina</a></li>
+                <li><a href="../../addRoll/addRoll.php">Cargo</a></li>
 
 
                 </li>
@@ -66,7 +66,10 @@ if (isset($_SESSION["nombre"])) {
         </div>
 
         <div class="crud">
-            <h1>Ver Tickets</h1>
+            <nav class="navbar navbar-ligth justify-content-center fs-3 mb-5">
+                <strong>Tickets resueltos</strong>
+            </nav>
+
             <table class="transparent-tabl">
                 <thead class="table-secondary text-white">
                     <tr>

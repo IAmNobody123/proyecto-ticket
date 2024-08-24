@@ -13,7 +13,11 @@ if (isset($_POST["submit"])) {
 
         // Ejecutar la consulta
         if ($stmt->execute()) {
-            echo "Registro insertado exitosamente.";
+            echo "<script>Swal.fire({
+                icon: 'success',
+                title: 'Registro exitoso',
+                text: 'Se registro la nueva Sede'
+            });</script>";
         } else {
             echo "Error al insertar registro: " . $stmt->error;
         }

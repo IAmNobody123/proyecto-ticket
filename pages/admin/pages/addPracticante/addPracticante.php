@@ -13,9 +13,9 @@ if (isset($_SESSION["nombre"])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Agregar Practicante</title>
-        <link rel="styleSheet" href="../../styleIndex.css?1">
+        <link rel="styleSheet" href="../../styleIndex.css?p">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
-        <link rel="stylesheet" href="./addPracticante.css?j">
+        <link rel="stylesheet" href="./addPracticante.css?k">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
@@ -34,21 +34,22 @@ if (isset($_SESSION["nombre"])) {
             <div class="text">Menu</div>
             <ul>
                 <li>
-                    <a href="../../index.php" class="feat-btn">inicio</a>
+                    <a href="../../index.php" class="feat-btn">Inicio</a>
                 </li>
-                <li>
-                    <a href="#">nuevo practicante</a>
+                <li class="paginaActual">
+                    <a href="#">Nuevo usuario</a>
                 </li>
                 <li>
                     <div class="mantenimiento">
                         <h1 class="tituloM">mantenimiento</h1>
                         <span class="fas fa-caret-down"></span>
                     </div>
-
-                <li><a href="../soporte/indexSoporte.php">soporte</a> </li>
-                <li><a href="../addSede/addSede.php">sede</a></li>
-                <li><a href="../addOficina/addOficina.php">oficina</a></li>
-                <li><a href="../addRoll/addRoll.php">cargo</a></li>
+                <li><a href="../soporte/indexSoporte.php">Tickets recibidos</a></li>
+                <li><a href="../soporte/layouts/tablaTicketsAsignados.php">Tickets Asignados</a> </li>
+                <li><a href="../soporte/layouts/ticketsResueltos.php">Tickets Resueltos</a></li>
+                <li><a href="../addSede/addSede.php">Sede</a> </li>
+                <li><a href="../addOficina/addOficina.php">Oficina</a></li>
+                <li><a href="../addRoll/addRoll.php">Cargo</a></li>
                 </li>
             </ul>
         </nav>
@@ -74,12 +75,13 @@ if (isset($_SESSION["nombre"])) {
                     Agregar un nuevo usuario
                 </button>
                 <?php
-                require 'controlador/registrar.php';
+                include 'controlador/registrar.php';
                 require 'controlador/roles.php';
-                include 'controlador/filtrar.php';
                 include 'controlador/eliminarUsuario.php';
+                include 'controlador/filtrar.php';
+
                 ?>
-                <!-- Modal -->
+                <!-- Modal registrar-->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
@@ -96,7 +98,7 @@ if (isset($_SESSION["nombre"])) {
                                 <form action="" enctype="multipart/form-data" method="POST">
 
                                     <div class="camposF">
-                                        <label class="textoF" >Ingresa el nombre del usuario</label>
+                                        <label class="textoF">Ingresa el nombre del usuario</label>
                                         <input type="text" name="nombreUsuario" class="entradaT nombreU"
                                             placeholder="por ejemplo Juan" minlength="10" required>
                                     </div>
@@ -109,7 +111,7 @@ if (isset($_SESSION["nombre"])) {
 
                                     <br>
                                     <div class="camposF">
-                                        <label class="textoF" >Ingresa la contraseña del usuario</label>
+                                        <label class="textoF">Ingresa la contraseña del usuario</label>
                                         <input type="text" class="entradaT" name="contraseñaUsuario"
                                             placeholder="ingresa tu contraseña" minlength="6" required>
                                     </div>
@@ -134,7 +136,7 @@ if (isset($_SESSION["nombre"])) {
                                     <br>
 
                                     <div class="camposF">
-                                        <label  class="textoF">De que oficina sera?</label>
+                                        <label class="textoF">De que oficina sera?</label>
 
                                         <select id="oficinaSelected" name="oficina" required>
                                             <?php
@@ -147,7 +149,8 @@ if (isset($_SESSION["nombre"])) {
                                     </div>
                                     <br>
 
-                                    <input type="file" class="form-control mb-2 " name="imagen" id="subirArchivo" required>
+                                    <input type="file" class="form-control mb-2 " name="imagen" id="subirArchivo"
+                                        accept="image/*" required>
                                     <br>
                                     <input type="submit" value="Registrar" name="btnregistrar"
                                         class="form-control btn btn-success">
@@ -190,10 +193,10 @@ if (isset($_SESSION["nombre"])) {
                             </select>
                         </div>
                         <div class="col col-3">
-                        <input type="submit" value="Filtrar" class="btn btn-primary mt-4" name="btnFiltrar">
+                            <input type="submit" value="Filtrar" class="btn btn-primary mt-4" name="btnFiltrar">
                         </div>
                     </div>
-                    
+
                 </form>
 
                 <!-- trabla para ver los usuarios -->
@@ -232,9 +235,9 @@ if (isset($_SESSION["nombre"])) {
                                     </td>
                                     <td>
                                         <form method="POST" action="" id="formEliminar<?= $problemaV->idUsuario ?>">
-                                            <input type="hidden" name="idUsuario" value="<?= $problemaV->idUsuario ?>">
+                                            <input type="hidden" name="eliminar" value="<?= $problemaV->idUsuario ?>">
                                             <!-- <a href="" class="btn btn-warning">editar</a> -->
-                                            <input type="button" value="Eliminar" class="btn btn-danger"
+                                            <input type="button" value="Eliminar" class="btn btn-danger" 
                                                 onclick="confirmarEliminacion(<?= $problemaV->idUsuario ?>)">
                                         </form>
                                     </td>
@@ -271,6 +274,15 @@ if (isset($_SESSION["nombre"])) {
                     }
                 });
             }
+        </script>
+        <script>
+            document.getElementById('exampleModal').addEventListener('btnRegistrar', function (event) {
+                const idInput = document.getElementById('idUsuario');
+                if (idInput.value.trim() === '') {
+                    alert('El campo ID no puede estar vacío.');
+                    event.preventDefault(); // Evita el envío del formulario
+                }
+            });
         </script>
     </body>
 

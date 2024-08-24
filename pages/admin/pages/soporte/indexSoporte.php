@@ -12,9 +12,9 @@ if (isset($_SESSION["nombre"])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Atender tareas</title>
-        <link rel="styleSheet" href="estilos/modalVer.css?g">
-        <link rel="styleSheet" href="../stylesGeneral.css?w">
-        <link rel="styleSheet" href="indexSoporte.css?p">
+        <link rel="styleSheet" href="estilos/modalVer.css?d">
+        <link rel="styleSheet" href="../stylesGeneral.css?d">
+        <link rel="styleSheet" href="indexSoporte.css?2">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -28,24 +28,23 @@ if (isset($_SESSION["nombre"])) {
             <div class="text">Menu</div>
             <ul>
                 <li>
-                    <a href="../../index.php" class="feat-btn">inicio</a>
+                    <a href="../../index.php" class="feat-btn">Inicio</a>
                 </li>
                 <li>
-                    <a href="../addPracticante/addPracticante.php">nuevo practicante</a>
+                    <a href="../addPracticante/addPracticante.php">Nuevo usuario</a>
                 </li>
                 <li>
                     <div class="mantenimiento">
                         <h1 class="tituloM">mantenimiento</h1>
                         <span class="fas fa-caret-down"></span>
                     </div>
+                <li class="paginaActual"><a href="../soporte/indexSoporte.php">Tickets recibidos</a></li>
                 <li><a href="layouts/tablaTicketsAsignados.php">Tickets Asignados</a> </li>
                 <li><a href="layouts/ticketsResueltos.php">Tickets Resueltos</a></li>
                 <li><a href="../addSede/addSede.php">Sede</a> </li>
-                <li><a href="../addOficina/addOficina.php">oficina</a></li>
-                <li><a href="../addPracticante/addPracticante.php">Rol</a> </li>
-                <li><a href="../addRoll/addRoll.php">cargo</a></li>
+                <li><a href="../addOficina/addOficina.php">Oficina</a></li>
+                <li><a href="../addRoll/addRoll.php">Cargo</a></li>
                 </li>
-
             </ul>
         </nav>
 
@@ -66,7 +65,10 @@ if (isset($_SESSION["nombre"])) {
             include "controladores/atenderProblema.php";
             ?>
 
-            <h1>Designar Tarea</h1>
+            <nav class="navbar navbar-ligth justify-content-center fs-3 mb-5">
+                <strong>Problemas recibidos</strong>
+            </nav>
+            
             <table class="transparent-table">
                 <thead class="table-secondary text-white">
                     <tr>
@@ -121,7 +123,7 @@ if (isset($_SESSION["nombre"])) {
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form method="POST" action=""> 
+                            <form method="POST" action="">
                                 <input type="hidden" name="idProblema" id="idProblema">
                                 <!-- Campo oculto para el idProblema -->
                                 <label for="selPrac">Selecciona un practicante</label>

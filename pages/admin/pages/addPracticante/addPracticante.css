@@ -134,6 +134,7 @@ span {
 nav ul {
     padding-left: 0;
 }
+
 /* --------------------------------- */
 #welcomeAdm {
     color: white;
@@ -145,11 +146,13 @@ nav ul {
     font-weight: bold;
     padding: 5px;
 }
-.title{
-    color: black ;
+
+.title {
+    color: black;
     text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 .entradaT {
     width: 180px;
     padding-left: 15px;
@@ -211,7 +214,7 @@ option {
     background-color: rgb(124, 196, 124);
     color: blue;
     font-weight: bold;
-    
+
 }
 
 .nombreU {
@@ -225,6 +228,7 @@ option {
     margin: 5px;
     border: 1px solid;
 }
+
 /* -------------------------- */
 
 .crud {
@@ -250,6 +254,7 @@ option {
     z-index: -1;
     background-repeat: no-repeat;
 }
+
 /* -------------------------- */
 
 .form-label {
@@ -269,6 +274,7 @@ option {
 option {
     font-weight: bold;
 }
+
 /* -------------------------- */
 
 table {
@@ -305,6 +311,12 @@ label {
 .transparent-table td {
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
-thead{
+
+thead {
     background: linear-gradient(to right, #c548484d, #8a1919);
+}
+
+.paginaActual {
+    background-color: #333;
+    border-left: 5px solid white;
 }

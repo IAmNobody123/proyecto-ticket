@@ -77,35 +77,15 @@ nav ul ul li a {
   padding-left: 80px;
 }
 
-nav ul li.active ul li a {
-  color: #e6e6e6;
-  background-color: #55142f;
-  border-left-color: transparent;
-}
-
-nav ul ul li a:hover {
-  color: black !important;
-  font-weight: 700;
-  background: #681935 !important;
-}
-
-nav ul li a span {
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
-  font-size: 22px;
-  transition: transform 0.4s;
-}
 
 
-nav ul li a:hover span {
-  transform: translateY(-50%) rotate(-180deg);
-}
+
+
 
 span {
   color: white;
 }
+/* ------------------------------------ */
 
 #titulo {
   padding: 20px;
@@ -136,6 +116,7 @@ span {
   padding: 20px;
 }
 
+/* ------------------------------------ */
 
 .boxshadow {
   color: black;
@@ -214,12 +195,7 @@ span {
   background-color: #f0f0f0;
   /* Color de fondo al pasar el ratón */
 }
-
-
-span {
-  color: white;
-}
-
+/* ------------------------------------ */
 .mantenimiento {
   display: flex;
   align-items: center;
@@ -248,3 +224,15 @@ nav ul {
   padding-left: 42px;
 }
 
+.paginaActual{
+  background-color: #333;
+  border-left: 5px solid white;
+}
+.title {
+  color: black;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+label{
+  font-weight: bold;
+}

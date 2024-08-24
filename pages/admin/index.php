@@ -24,6 +24,9 @@ if (isset($_SESSION["nombre"])) {
         <nav class="sidebar">
             <div class="text">Menu</div>
             <ul>
+                <li class="paginaActual">
+                    <a href="#" class="feat-btn">inicio</a>
+                </li>
                 <li>
                     <a href="./pages/addPracticante/addPracticante.php">nuevo practicante</a>
                 </li>
@@ -32,10 +35,12 @@ if (isset($_SESSION["nombre"])) {
                         <h1 class="tituloM">mantenimiento</h1>
                         <span class="fas fa-caret-down"></span>
                     </div>
-                <li><a href="pages/soporte/indexSoporte.php">soporte</a> </li>
-                <li><a href="pages/addSede/addSede.php">sede</a></li>
-                <li><a href="pages/addOficina/addOficina.php">oficina</a></li>
-                <li><a href="pages/addRoll/addRoll.php">cargo</a></li>
+                <li><a href="pages/soporte/indexSoporte.php">Tickets recibidos</a></li>
+                <li><a href="pages/soporte/layouts/tablaTicketsAsignados.php">Tickets Asignados</a> </li>
+                <li><a href="pages/soporte/layouts/ticketsResueltos.php">Tickets Resueltos</a></li>
+                <li><a href="pages/addSede/addSede.php">Sede</a></li>
+                <li><a href="pages/addOficina/addOficina.php">Oficina</a></li>
+                <li><a href="pages/addRoll/addRoll.php">Cargo</a></li>
 
                 </li>
             </ul>

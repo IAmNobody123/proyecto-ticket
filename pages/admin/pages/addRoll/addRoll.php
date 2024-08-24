@@ -12,8 +12,8 @@ if (isset($_SESSION["nombre"])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Cargo</title>
-        <link rel="styleSheet" href="../stylesGeneral.css?k">
-        <link rel="stylesheet" href="./addRoll.css?k">
+        <link rel="styleSheet" href="../stylesGeneral.css?x">
+        <link rel="stylesheet" href="./addRoll.css?z">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -32,18 +32,22 @@ if (isset($_SESSION["nombre"])) {
             <div class="text">Menu</div>
             <ul>
                 <li>
-                    <a href="../addPracticante/addPracticante.php">nuevo practicante</a>
+                    <a href="../../index.php" class="feat-btn">Inicio</a>
+                </li>
+                <li>
+                    <a href="../addPracticante/addPracticante.php">Nuevo usuario</a>
                 </li>
                 <li>
                     <div class="mantenimiento">
                         <h1 class="tituloM">mantenimiento</h1>
                         <span class="fas fa-caret-down"></span>
                     </div>
-                <li><a href="../soporte/indexSoporte.php">soporte</a> </li>
-                <li><a href="../addPracticante/addPracticante.php">practicante</a> </li>
-                <li><a href="../addSede/addSede.php">sede</a></li>
-                <li><a href="../addOficina/addOficina.php">oficina</a></li>
-
+                <li><a href="../soporte/indexSoporte.php">Tickets recibidos</a></li>
+                <li><a href="../soporte/layouts/tablaTicketsAsignados.php">Tickets Asignados</a> </li>
+                <li><a href="../soporte/layouts/ticketsResueltos.php">Tickets Resueltos</a></li>
+                <li><a href="../addSede/addSede.php">Sede</a> </li>
+                <li><a href="../addOficina/addOficina.php">Oficina</a></li>
+                <li class="paginaActual"><a href="#">Cargo</a></li>
                 </li>
             </ul>
         </nav>
@@ -59,14 +63,14 @@ if (isset($_SESSION["nombre"])) {
         </div>
 
         <div class="crud">
-            <h1 class="title">
-                Ingrese un nuevo cargo
-            </h1>
+        <nav class="navbar navbar-ligth justify-content-center fs-3 mb-5">
+                <strong>Ingrese un nuevo Cargo</strong>
+            </nav>
 
-            <div class="container justify-content-center">
-                <form action="" method="post">
-                    <div class="col">
-                        <div class="col-3">
+            <div class="container">
+                <form action="" method="post" class="formCargo">
+                    <div class="row">
+                        <div class="col">
                             <label for="" class="form-label">
                                 Ingresar el nombre del nuevo cargo:
                             </label>
@@ -77,8 +81,10 @@ if (isset($_SESSION["nombre"])) {
 
                     </div>
                     <div class="col">
-                        <button type="submit" class="btn btn-success" name="submitRoll">Agregar</button>
+                        <button type="submit" class="btn btn-success mb-2" name="submitRoll">Agregar</button>
                     </div>
+
+
                 </form>
             </div>
 
