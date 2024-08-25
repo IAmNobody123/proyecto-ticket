@@ -66,3 +66,26 @@
     color: black;
     font-size: 20px;
   }
+  .modal-title{
+    padding-left: 50px;
+  }
+  .modal-footer{
+    display: flex;
+    margin: auto;
+  }
+  .modal-body{
+    text-align: start;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+  }
+  #modalDetalleLabel{
+    color: rgb(56, 4, 4);
+  }
+
+.imagenPracti{
+  width: 50px;
+}
+.atender-body{
+  padding-top: 30px;
+  padding-bottom: 30px;
+}

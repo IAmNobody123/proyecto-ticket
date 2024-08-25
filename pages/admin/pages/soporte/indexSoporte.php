@@ -14,7 +14,7 @@ if (isset($_SESSION["nombre"])) {
         <title>Atender tareas</title>
         <link rel="styleSheet" href="estilos/modalVer.css?d">
         <link rel="styleSheet" href="../stylesGeneral.css?d">
-        <link rel="styleSheet" href="indexSoporte.css?2">
+        <link rel="styleSheet" href="indexSoporte.css?3">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -68,7 +68,7 @@ if (isset($_SESSION["nombre"])) {
             <nav class="navbar navbar-ligth justify-content-center fs-3 mb-5">
                 <strong>Problemas recibidos</strong>
             </nav>
-            
+
             <table class="transparent-table">
                 <thead class="table-secondary text-white">
                     <tr>
@@ -90,6 +90,9 @@ if (isset($_SESSION["nombre"])) {
                     ORDER BY P.fechaProblema ASC");
 
                     while ($problemaV = $verProblemasEnviados->fetch_object()) {
+                        $fechaProblema = new DateTime($problemaV->fechaProblema);
+                        $fecha = $fechaProblema -> format('Y-m-d'); 
+                        $hora = $fechaProblema ->format('H:i:s'); 
                         ?>
                         <tr>
                             <th scope="row"><?= $problemaV->nombre ?></th>
@@ -99,9 +102,16 @@ if (isset($_SESSION["nombre"])) {
                             <td>
                                 <a href="#" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#modalDetalle"
                                     data-id-problema="<?= $problemaV->idProblema ?>"
-                                    data-nombre="<?= $problemaV->nombreProblema ?>">
-                                    <!-- Cambié aquí para mostrar el nombre del problema -->
-                                    Ver
+                                    data-nombre-solicitante="<?= $problemaV->nombre?>"
+                                    data-sede="<?= $problemaV->nombreSede ?>"
+                                    data-area="<?= $problemaV->nombreOficina ?>"
+                                    data-nombre-problema="<?= $problemaV->nombreProblema ?>"
+                                    data-descripcion-problema="<?= $problemaV->descripcionProblema ?>"
+                                    data-hora="<?=$hora?>"
+                                    data-fecha="<?=$fecha?>"
+                                    >
+
+                                    Ver mas detalles
                                 </a>
                                 <a class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#modalAtender"
                                     data-id-problema="<?= $problemaV->idProblema ?>"
@@ -122,8 +132,9 @@ if (isset($_SESSION["nombre"])) {
                             <h5 class="modal-title text-center" id="myModalLabel">Designar tarea a un practicante</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body " id="atener-body">
                             <form method="POST" action="">
+                                <div class="atender-body">
                                 <input type="hidden" name="idProblema" id="idProblema">
                                 <!-- Campo oculto para el idProblema -->
                                 <label for="selPrac">Selecciona un practicante</label>
@@ -133,13 +144,13 @@ if (isset($_SESSION["nombre"])) {
                                     // Mostrar las sedes en el menú desplegable
                                     while ($problemaV = $resultPracticantes->fetch_object()) {
                                         echo "<option value='{$problemaV->idUsuario}'>{$problemaV->nombre}</option>";
-                                        $valor = $idUsuario;
                                     }
-                                    echo $problemaV;
+
                                     ?>
                                 </select>
+                                </div>
                                 <div class="modal-footer justify-content-center">
-                                    <button type="submit" name="submit" class="btn btn-secondary me-2">Designar</button>
+                                    <button type="submit" name="submitAtender" class="btn btn-secondary me-2">Designar</button>
                                     <button type="button" class="btn btn-secondary me-3"
                                         data-bs-dismiss="modal">Cerrar</button>
                                 </div>
@@ -157,8 +168,13 @@ if (isset($_SESSION["nombre"])) {
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <p id="modalId"></p>
-                            <p id="modalNombre"></p>
+                            <p id="ModalSolicitante"></p>
+                            <p id="ModalFecha"></p>
+                            <p id="ModalHora"></p>
+                            <p id="ModalSede"></p>
+                            <p id="ModalArea"></p>
+                            <p id="ModalNombre"></p>
+                            <p id="ModalDescripcion"></p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -166,7 +182,7 @@ if (isset($_SESSION["nombre"])) {
                     </div>
                 </div>
             </div>
-
+            <!-- ----------------------- -->
             <script>
                 function setIdProblema(idProblema) {
                     document.getElementById('idProblema').value = idProblema;
@@ -177,12 +193,25 @@ if (isset($_SESSION["nombre"])) {
                     var button = $(event.relatedTarget); // Botón que activó el modal
 
                     var idProblemas = button.data('id-problema');
-                    var nombreP = button.data('nombre');
+                    var nombreSolicitante = button.data('nombre-solicitante');
+                    var fechaProblema = button.data('fecha');
+                    var horaProblema = button.data('hora');
+                    var sede = button.data('sede');
+                    var area = button.data('area');
+                    var nombreProblema = button.data('nombre-problema');
+                    var descripcionProblema = button.data('descripcion-problema');
 
                     // Actualizar el contenido del modal
                     var modal = $(this);
-                    modal.find('#modalId').text('Número de Problema: ' + idProblemas);
-                    modal.find('#modalNombre').text('Nombre del Problema: ' + nombreP);
+                    modal.find('#modalDetalleLabel').html('Detalle del problema NRO:' + idProblemas);
+                    modal.find('#ModalSolicitante').html('<b>Solicitante: </b>' + nombreSolicitante);
+                    modal.find('#ModalFecha').html('<b>Fecha de la solicitud: </b>' + fechaProblema);
+                    modal.find('#ModalHora').html('<b>Hora de la solicitud: </b>' + horaProblema);
+                    modal.find('#ModalSede').html('<b>Sede:</b> ' + sede);
+                    modal.find('#ModalArea').html('<b>Area: </b>' + area);
+                    modal.find('#ModalNombre').html('<b>Nombre del Problema: </b>' + nombreProblema);
+                    modal.find('#ModalDescripcion').html('<b>Descripcion del problema: </b>' + descripcionProblema);
+
                 });
             </script>
         </div>

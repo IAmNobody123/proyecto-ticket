@@ -1,5 +1,5 @@
 <?php
-if (isset($_POST["submit"])) {
+if (isset($_POST["submitAtender"])) {
     if (!empty($_POST["selectorPracticante"]) && !empty($_POST["idProblema"])) {
         $idPracticante = $_POST["selectorPracticante"];
         $idProblema = $_POST["idProblema"]; // Obtener el idProblema
@@ -38,6 +38,9 @@ if (isset($_POST["submit"])) {
                 text: 'El problema fue designado con exito'
             });
         </script>";
+        $stmtActualizarEP->close();
+        $stmtActualizarFP ->close();
+
         } else {
             echo "Error al insertar registro: " . $stmtInsertarT->error;
         }
@@ -45,7 +48,13 @@ if (isset($_POST["submit"])) {
         // Cerrar la declaración
         $stmtInsertarT->close();
     } else {
-        echo "Por favor, completa todos los campos.";
+        echo "<script>
+        Swal.fire({
+                icon: 'warning',
+                title: 'La atención NO fue aceptada',
+                text: 'Seleccione un practicante'
+            });
+        </script>";
     }
 }
 ?>
