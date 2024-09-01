@@ -1,19 +1,50 @@
+body {
+  background-color: rgb(113, 190, 165);
+  margin: 0; /* Elimina el margen predeterminado del body */
+}
+
+.container-fluid {
+  display: flex;
+  flex-direction: column; /* Apila los elementos verticalmente */
+  height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la ventana */
+}
+
+section {
+  flex-grow: 1; /* Permite que la sección crezca y ocupe el espacio disponible */
+  display: flex;
+  justify-content: center; /* Centra horizontalmente el contenido */
+  align-items: center; /* Centra verticalmente el contenido */
+}
+
+.Bsuperior {
+  text-align: center; /* Centra el texto dentro de Bsuperior */
+}
+
 .logout-btn {
   background-color: transparent;
   border: none;
-  color: #794b50;
+  color: #022deb;
   padding: 0.25rem 0.5rem;
-  font-size: 0.875rem;
+  font-size: 1rem; /* Ajusta el tamaño de fuente */
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .logout-btn:hover {
-  color: #fff;
-  background-color: #7c575b;
+  color: black;
+  background-color: #1202f0;
   border-color: #dc3545;
 }
 
 .logout-btn:focus {
   box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.5);
+}
+.form-control {
+  width: 100%; /* Asegura que el select y otros inputs ocupen todo el ancho */
+  max-width: 100%; /* Evita que se salgan del contenedor */
+}
+
+option {
+  width: 100%; /* Asegura que el textarea ocupe todo el ancho */
+  max-width: 100%; /* Evita que se salgan del contenedor */
 }

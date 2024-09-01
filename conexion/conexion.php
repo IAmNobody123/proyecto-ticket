@@ -7,6 +7,7 @@ la base de datos se llama :  "tickets"
 el puerto por defecto es el 3306, ya no se especifica
 
 */
-// $conexion = new mysqli("localhost","root","","tickets");
+
 $conexion = new mysqli("localhost","root","","ticket");
+// $conexion = new mysqli("sql307.infinityfree.com","if0_37185371","314Ensa","if0_37185371_XXX");
 ?>

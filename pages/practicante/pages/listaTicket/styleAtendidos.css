@@ -1,0 +1,32 @@
+
+ul {
+    padding-left: 0;
+}
+
+.crud {
+
+    flex-wrap: wrap-reverse;
+    align-items: start;
+    justify-content: start;
+display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+}
+
+.card {
+    flex: 0 0 25%;
+    width: 250px;
+    padding: 10px;
+    box-sizing: border-box;
+    height: auto;
+
+
+}
+.card:hover{
+    transform: scale(1.1);
+}
+.footerCard{
+    display: flex;
+    justify-content: space-evenly;
+    
+}

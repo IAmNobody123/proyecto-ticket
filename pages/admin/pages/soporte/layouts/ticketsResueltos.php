@@ -24,9 +24,9 @@ if (isset($_SESSION["nombre"])) {
     <body>
         <?php
         include "../../../../../conexion/conexion.php";
-        $verTicketsAsignados = $conexion->query("select * from ticket t
-    inner join usuario u on t.idUsuario = u.idUsuario
-    where estadoTicket = 'aceptado' ");
+        $verTicketsAsignados = $conexion->query("SELECT * from ticket t
+            inner join usuario u on t.idUsuario = u.idUsuario
+            where estadoTicket = 'finalizado' ");
         ?>
         <nav class="sidebar">
             <div class="text">Menu</div>
@@ -77,6 +77,8 @@ if (isset($_SESSION["nombre"])) {
                         <th class="col">nombre del practicante</th>
                         <th class="col">fecha de asignacion</th>
                         <th class="col">hora de asignacion</th>
+                        <th class="col">fecha de solucion</th>
+                        <th class="col">hora de solucion</th>
                     </tr>
                 </thead>
 
@@ -89,6 +91,8 @@ if (isset($_SESSION["nombre"])) {
                             <td><?= $problemaV->nombre ?></td>
                             <td><?= $problemaV->fecha ?></td>
                             <td><?= $problemaV->hora ?></td>
+                            <td><?= $problemaV->fechaAtencion ?></td>
+                            <td><?= $problemaV->horaAtencion ?></td>
                         </tr>
                         <?php
                     }
