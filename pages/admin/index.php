@@ -74,7 +74,6 @@ if (isset($_SESSION["nombre"])) {
         </div>
 
         <script src="pages/addPracticante/controlador/eventoClick.js"></script>
-
         <script type="text/javascript" src="controladores/graficas.js"></script>
         <script type="text/javascript" src="controladores/grafica2.js"></script>
         <script type="text/javascript" src="controladores/grafica3.js"></script>

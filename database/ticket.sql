@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-08-2024 a las 23:09:30
+-- Tiempo de generación: 09-09-2024 a las 05:51:03
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.1.25
 
@@ -20,16 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `ticket`
 --
-
-DELIMITER $$
---
--- Procedimientos
---
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_CANTIDADTIPOPROBLEMA` ()   SELECT tp.nombreProblema, count(*) as cantidad FROM problema p inner join tipoproblema tp 
-on p.idTipoProblema =tp.idTipoProblema
-GROUP by tp.idTipoProblema$$
-
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -49,7 +39,11 @@ CREATE TABLE `oficina` (
 
 INSERT INTO `oficina` (`idOficina`, `nombreOficina`, `idSede`) VALUES
 (1, 'OTI', 1),
-(2, 'RRHH', 1);
+(2, 'RRHH', 1),
+(6, 'gestion y riesgo', 2),
+(8, 'medio ambiente', 3),
+(9, 'Imagen institucional', 5),
+(10, 'oficina 5', 6);
 
 -- --------------------------------------------------------
 
@@ -67,7 +61,6 @@ CREATE TABLE `problema` (
   `idTipoProblema` int(11) DEFAULT NULL,
   `idUsuario` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 
 -- --------------------------------------------------------
 
@@ -107,7 +100,10 @@ CREATE TABLE `sede` (
 
 INSERT INTO `sede` (`idSede`, `nombreSede`, `lugarReferencia`) VALUES
 (1, 'central', 'Plaza regocijo'),
-(2, 'Qoricancha', 'en av. sol');
+(2, 'Qoricancha', 'en av. sol'),
+(3, 'sede 3', 'cerca de la sede 2'),
+(5, 'sede 4', 'cerca a la sede 1'),
+(6, 'sede 5', 'casi cerca a la central');
 
 -- --------------------------------------------------------
 
@@ -122,12 +118,11 @@ CREATE TABLE `ticket` (
   `estadoTicket` varchar(10) DEFAULT 'aceptado',
   `fechaAtencion` date NOT NULL DEFAULT current_timestamp(),
   `horaAtencion` time NOT NULL DEFAULT current_timestamp(),
-  `requerimiento` varchar(255) NOT NULL,
+  `requerimiento` enum('ninguna','hardware','software','internet','perifericos','conexiones') NOT NULL DEFAULT 'ninguna',
   `descripcion_solucion` text DEFAULT NULL,
   `idUsuario` int(11) DEFAULT NULL,
   `idProblema` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 
 -- --------------------------------------------------------
 
@@ -163,6 +158,7 @@ CREATE TABLE `usuario` (
   `nombre` varchar(50) NOT NULL,
   `idLogin` varchar(15) DEFAULT NULL,
   `password` varchar(10) DEFAULT NULL,
+  `genero` enum('varon','mujer') NOT NULL DEFAULT 'varon',
   `tareaAsignada` enum('ocupado','libre') NOT NULL DEFAULT 'libre',
   `estado` enum('activo','inactivo') NOT NULL DEFAULT 'activo',
   `direccionImagen` varchar(50) DEFAULT NULL,
@@ -170,12 +166,6 @@ CREATE TABLE `usuario` (
   `idRol` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `usuario`
---
-
-INSERT INTO `usuario` (`idUsuario`, `nombre`, `idLogin`, `password`, `tareaAsignada`, `estado`, `direccionImagen`, `idOficina`, `idRol`) VALUES
-(1, '', 'admin', 'admin', 'libre', 'activo', NULL, 1, 1);
 --
 -- Índices para tablas volcadas
 --
@@ -226,6 +216,8 @@ ALTER TABLE `tipoproblema`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`idUsuario`),
+  ADD UNIQUE KEY `idUsuario` (`idUsuario`),
+  ADD UNIQUE KEY `idLogin` (`idLogin`),
   ADD KEY `idRol` (`idRol`),
   ADD KEY `idOficina` (`idOficina`);
 
@@ -237,13 +229,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `oficina`
 --
 ALTER TABLE `oficina`
-  MODIFY `idOficina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idOficina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `problema`
 --
 ALTER TABLE `problema`
-  MODIFY `idProblema` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `idProblema` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -255,13 +247,13 @@ ALTER TABLE `rol`
 -- AUTO_INCREMENT de la tabla `sede`
 --
 ALTER TABLE `sede`
-  MODIFY `idSede` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idSede` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `idTicket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `idTicket` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `tipoproblema`
@@ -273,7 +265,7 @@ ALTER TABLE `tipoproblema`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas

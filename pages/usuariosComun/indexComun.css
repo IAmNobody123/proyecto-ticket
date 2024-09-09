@@ -1,50 +1,130 @@
-body {
-  background-color: rgb(113, 190, 165);
-  margin: 0; /* Elimina el margen predeterminado del body */
-}
 
 .container-fluid {
   display: flex;
-  flex-direction: column; /* Apila los elementos verticalmente */
-  height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la ventana */
+  flex-direction: column;
+  height: 100vh;
 }
 
 section {
-  flex-grow: 1; /* Permite que la sección crezca y ocupe el espacio disponible */
+  flex-grow: 1;
   display: flex;
-  justify-content: center; /* Centra horizontalmente el contenido */
-  align-items: center; /* Centra verticalmente el contenido */
+  justify-content: center;
+  align-items: center;
 }
 
 .Bsuperior {
-  text-align: center; /* Centra el texto dentro de Bsuperior */
+  text-align: center;
+  color:  darkblue;
 }
 
 .logout-btn {
-  background-color: transparent;
+  background-color: darkturquoise;
   border: none;
-  color: #022deb;
-  padding: 0.25rem 0.5rem;
-  font-size: 1rem; /* Ajusta el tamaño de fuente */
+  color: white;
+  font-weight: bold;
+  padding: 0.45rem 0.55rem;
+  letter-spacing: 0.6px;
+  font-size: 1.1rem;
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .logout-btn:hover {
-  color: black;
+  color: white;
   background-color: #1202f0;
-  border-color: #dc3545;
+  border-color: black;
+  
 }
 
-.logout-btn:focus {
-  box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.5);
-}
+
 .form-control {
-  width: 100%; /* Asegura que el select y otros inputs ocupen todo el ancho */
-  max-width: 100%; /* Evita que se salgan del contenedor */
+  width: 100%;
+  max-width: 100%;
+}
+
+.form-label {
+  color: white;
+  background:#807a7a;
+  padding: 2px;
+  min-width: 280px;
+  text-align: center;
+  border-radius: 20px;
+  font-weight: bold;
+  color: darkblue;
 }
 
 option {
-  width: 100%; /* Asegura que el textarea ocupe todo el ancho */
-  max-width: 100%; /* Evita que se salgan del contenedor */
+  width: 100%;
+  max-width: 100%;
+}
+#container{
+  height: auto;
+  width: 100%;
+  background: linear-gradient(45deg,#333,#807a7a,#524f4f,#333);
+  background-size: 300%,300%;
+  animation: color 12s ease-in-out infinite;
+}
+
+@keyframes color {
+  0%{
+    background-position: 0 50%;
+  }
+  50%{
+    background-position: 100% 50%;
+  }
+  100%{
+    background-position: 0 50%;
+  }
+}
+.nombre{
+  margin-top: 0;
+  font-weight: bold;
+}
+
+
+select {
+  width: 100%;
+  padding-right: 30px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><polygon points="0,0 10,0 5,10" fill="%23000"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px;
+}
+
+select:focus {
+  outline: none;
+  border-color: black;
+}
+
+select option {
+  background-color: #fff; /* Color de fondo por defecto */
+  color: #000; /* Color del texto por defecto */
+  font-weight: bold;
+}
+
+img{
+  height: 180px;
+  width: auto;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px white;
+  margin-bottom: 10px;
+}
+#btnReg{
+  margin-left: 38%;
+}
+.container {
+  width: 100%;
+}
+
+/* Estilos para pantallas más grandes que celulares */
+@media (min-width: 768px) {
+  .container {
+    width: 60%;
+  }
 }

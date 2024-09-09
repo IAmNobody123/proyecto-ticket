@@ -38,7 +38,7 @@ if (isset($_SESSION["nombre"])) {
         <div class="top-bar" id="welcomeA">
             <h1 id="welcomeAdm">Bienvenido <?= $usuarioName ?></h1>
             <div class="boxshadow" id="dropdownToggle">
-                <img src='../admin/pages/addPracticante/fotos/<?= $usuarioId; ?>.jpg' alt="">
+                <img src='../../../admin/pages/addPracticante/fotos/<?= $idUsuario; ?>.jpg' alt="">
             </div>
             <div class="dropdown-menu" id="dropdownMenu">
                 <a href="controladores/cerrarSesion.php">Cerrar sesión</a>
@@ -73,6 +73,7 @@ if (isset($_SESSION["nombre"])) {
                         <p><b>Asignado el:</b> <?= $problemaV->fecha ?></p>
 
                         <p><b>En horas:</b> <?= $problemaV->hora ?></p>
+                        <p><b>Solucion:</b> <?= $problemaV->descripcion_solucion ?></p>
                     </div>
                     <div class="footerCard">
                         <a class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modalAtender"

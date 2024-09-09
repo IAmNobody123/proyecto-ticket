@@ -7,4 +7,6 @@ $resultTipoProblema = $conexion->query($sqlTipoProblema);
 if ($resultTipoProblema === false) {
     die("Error en la consulta de sedes: " . $conexion->error);
 }
+
+
 ?>

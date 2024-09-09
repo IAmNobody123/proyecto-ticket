@@ -1,6 +1,7 @@
 <?php
 session_start();
 include("../../conexion/conexion.php");
+include "controladores/atenderTicket.php";
 
 if (isset($_SESSION["nombre"])) {
    $usuarioName = $_SESSION["nombre"];
@@ -17,17 +18,17 @@ if (isset($_SESSION["nombre"])) {
          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
       <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
-      <link rel="styleSheet" href="./style.css?z">
+      <link rel="styleSheet" href="./style.css?g">
    </head>
 
    <body>
       <nav class="sidebar">
          <div class="text">Menu</div>
-         <ul >
+         <ul>
             <li>
                <a href="#" class="feat-btn paginaActual">Inicio</a>
             </li>
-            <li >
+            <li>
                <a href="pages/listaTicket/listarTicket.php">tickets atendidos</a>
             </li>
 
@@ -52,6 +53,10 @@ if (isset($_SESSION["nombre"])) {
                     INNER JOIN oficina O ON U.idOficina = O.idOficina 
                     INNER JOIN sede S ON O.idSede = S.idSede inner join ticket t on t.idProblema = p.idProblema where t.idUsuario = $usuarioId  and estadoTicket ='aceptado'");
          if ($problemaV = $tareasUsuario->fetch_object()) {
+            setlocale(LC_TIME, 'es_ES.UTF-8');
+            $fechaOriginal = $problemaV->fecha;
+            $timestamp = strtotime($fechaOriginal);
+            $fechaFormateada = date("d/m/Y", $timestamp);
             ?>
             <p class="blink">Tienes una tarea pendiente: </p>
             <div class="card">
@@ -59,14 +64,14 @@ if (isset($_SESSION["nombre"])) {
                   <?= $problemaV->nombreProblema ?>
                </div>
                <div class="bodyCard">
-                  <p>En: <?= $problemaV->nombreOficina ?></p>
+                  <p>Lugar: <?= $problemaV->nombreOficina ?></p>
 
-                  <p>asignado el: <?= $problemaV->fecha ?></p>
+                  <p>asignado el: <?= $fechaFormateada ?></p>
 
-                  <p>a horas: <?= $problemaV->hora ?></p>
+                  <p>fecha y hora: <?= $problemaV->hora ?></p>
                </div>
                <div class="footerCard">
-                  <a class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#modalAtender"
+                  <a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAtender"
                      data-id-problema="<?= $problemaV->idProblema ?>" data-nombre-solicitante="<?= $problemaV->nombre ?>"
                      data-sede="<?= $problemaV->nombreSede ?>" data-area="<?= $problemaV->nombreOficina ?>"
                      data-nombre-problema="<?= $problemaV->nombreProblema ?>"

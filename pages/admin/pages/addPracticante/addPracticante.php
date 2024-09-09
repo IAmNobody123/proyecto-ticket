@@ -116,7 +116,21 @@ if (isset($_SESSION["nombre"])) {
                                             placeholder="ingresa tu contraseña" minlength="6" required>
                                     </div>
                                     <br>
+                                    <div class="camposF">
+                                        <label class="textoF" for="">
+                                            Seleccione el género:
+                                        </label>
+                                        <label for="masculino">
+                                            Varón:
+                                        </label>
+                                        <input type="radio" name="sexo" id="masculino" value="masculino">
 
+                                        <label for="femenino">
+                                            Mujer:
+                                        </label>
+                                        <input type="radio" name="sexo" id="femenino" value="femenino">
+                                    </div>
+                                    <br>
                                     <div class="camposF">
                                         <label class="textoF" class="form-label">Que rol tendra el usuario?</label>
 
@@ -150,7 +164,7 @@ if (isset($_SESSION["nombre"])) {
                                     <br>
 
                                     <input type="file" class="form-control mb-2 " name="imagen" id="subirArchivo"
-                                        accept="image/*" required>
+                                        accept="image/*">
                                     <br>
                                     <input type="submit" value="Registrar" name="btnregistrar"
                                         class="form-control btn btn-success">
@@ -237,7 +251,7 @@ if (isset($_SESSION["nombre"])) {
                                         <form method="POST" action="" id="formEliminar<?= $problemaV->idUsuario ?>">
                                             <input type="hidden" name="eliminar" value="<?= $problemaV->idUsuario ?>">
                                             <!-- <a href="" class="btn btn-warning">editar</a> -->
-                                            <input type="button" value="Eliminar" class="btn btn-danger" 
+                                            <input type="button" value="Eliminar" class="btn btn-danger"
                                                 onclick="confirmarEliminacion(<?= $problemaV->idUsuario ?>)">
                                         </form>
                                     </td>

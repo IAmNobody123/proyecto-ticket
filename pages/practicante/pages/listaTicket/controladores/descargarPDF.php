@@ -7,10 +7,19 @@ if (isset($_GET['idTicket'])) {
     {
         function header()
         {
+            
+            $this->Image('../../../img/img.png', 60, 20, 100);
+            $this->SetFont('Times', 'B', 7);
+            $this->setXY(30, 0);
+            $this->MultiCell(150, 80, utf8_decode("''Año del Bicentenario, de la consolidación de nuestra Independencia, y de la conmemoración de las heroicas batallas de Junín y Ayacucho''"), 0);
             $this->SetFont('Times', 'B', 20);
-            $this->Image('../../../img/inka.png', 20, 0, 180);
+            $this->Line(30, 42, 180, 42);
             $this->setXY(10, 50);
 
+        }
+        function footer(){
+            $this->setXY(0, 0);
+            $this->Image('../../../img/inka.png', 140, 210, 60);
         }
     }
     // Captura los datos enviados desde la URL
