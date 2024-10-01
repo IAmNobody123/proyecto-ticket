@@ -12,11 +12,11 @@ if (isset($_SESSION["nombre"])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>tickets en espera</title>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <link rel="styleSheet" href="../../style.css?k">
-        <link rel="styleSheet" href="./styleAtendidos.css?e">
+        <link rel="styleSheet" href="../../style.css?wks">
+        <link rel="styleSheet" href="./styleAtendidos.css?swe">
         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
     </head>
@@ -44,7 +44,9 @@ if (isset($_SESSION["nombre"])) {
                 <a href="controladores/cerrarSesion.php">Cerrar sesión</a>
             </div>
         </div>
+
         <div class="crud">
+            <p class="textI">Ver mis tickets atendidos</p>
             <?php
             require '../../../../conexion/conexion.php';
 
@@ -58,52 +60,64 @@ if (isset($_SESSION["nombre"])) {
             where t.idUsuario = $idUsuario  and estadoTicket ='finalizado' order by idTicket desc ");
 
             ?>
-            <?php
-            while ($problemaV = $verTickets->fetch_object()) {
-                
-                ?>
-                <div class="card">
-                    <div class="headCard">
-                        <?= $problemaV->idTicket ?>
-                        <?= $problemaV->nombreOficina ?>
-                    </div>
-                    <div class="bodyCard">
-                        <p> <b>Persona que solicito:</b> <?= $problemaV->nombreS ?></p>
+            <div class="container-table">
+                <table class="transparent-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Numeracion del ticket</th>
+                            <th scope="col">Persona Solicitante</th>
+                            <th scope="col">Nombre de la oficina</th>
+                            <th scope="col">Fecha de asignacion</th>
+                            <th scope="col">Hora de asignacion</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $numeracion =1;
+                        while ($problemaV = $verTickets->fetch_object()) {
+                            ?>
+                            <tr>
+                                <td scope="row"><?= $numeracion ?></td>
+                                <td scope="row"><?= $problemaV->nombreS ?></td>
+                                <td><?= $problemaV->nombreOficina ?></td>
+                                <td><?= $problemaV->fecha ?></td>
+                                <td><?= $problemaV->hora ?></td>
+                                <td class="botones">
+                                    <a class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modalAtender"
+                                        data-id-problema="<?= $problemaV->idProblema ?>"
+                                        data-nombre-solicitante="<?= $problemaV->nombre ?>"
+                                        data-sede="<?= $problemaV->nombreSede ?>" data-area="<?= $problemaV->nombreOficina ?>"
+                                        data-nombre-problema="<?= $problemaV->nombreProblema ?>"
+                                        data-descripcion-problema="<?= $problemaV->descripcionProblema ?>"
+                                        data-hora="<?= $problemaV->fecha ?>" data-fecha="<?= $problemaV->hora ?>"
+                                        onclick="setIdTicket('<?= $problemaV->idTicket ?>')">Ver</a>
+                                    <a href="controladores/descargarPDF.php?idTicket=<?= $problemaV->idTicket ?> 
+                                    &nombreS=<?= urlencode($problemaV->nombreS) ?>
+                                    &fecha=<?= urlencode($problemaV->fecha) ?>
+                                    &oficina=<?= urlencode($problemaV->nombreOficina) ?>
+                                    &nombre=<?= urlencode($problemaV->nombre) ?>
+                                    &hora=<?= urlencode($problemaV->hora) ?>    
+                                    &descripcionProblema=<?= urlencode($problemaV->descripcionProblema) ?>"
+                                        target="_blank" class="btn btn-danger pdfD">Descargar</a>
+                                </td>
+                            </tr>
+                            <?php
+                            $numeracion++;
+                        }
 
-                        <p><b>Asignado el:</b> <?= $problemaV->fecha ?></p>
+                        ?>
+                    </tbody>
 
-                        <p><b>En horas:</b> <?= $problemaV->hora ?></p>
-                        <p><b>Solucion:</b> <?= $problemaV->descripcion_solucion ?></p>
-                    </div>
-                    <div class="footerCard">
-                        <a class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modalAtender"
-                            data-id-problema="<?= $problemaV->idProblema ?>" data-nombre-solicitante="<?= $problemaV->nombre ?>"
-                            data-sede="<?= $problemaV->nombreSede ?>" data-area="<?= $problemaV->nombreOficina ?>"
-                            data-nombre-problema="<?= $problemaV->nombreProblema ?>"
-                            data-descripcion-problema="<?= $problemaV->descripcionProblema ?>"
-                            data-hora="<?= $problemaV->fecha ?>" data-fecha="<?= $problemaV->hora ?>"
-                            onclick="setIdTicket('<?= $problemaV->idTicket ?>')">Ver</a>
+            </div>
 
-                        <a href="controladores/descargarPDF.php?idTicket=<?= $problemaV->idTicket ?>
-                        &nombreS=<?= urlencode($problemaV->nombreS) ?>
-                        &fecha=<?= urlencode($problemaV->fecha) ?>
-                        &oficina=<?= urlencode($problemaV->nombreOficina) ?>
-                        &nombre=<?= urlencode($problemaV->nombre) ?>
-                        &hora=<?= urlencode($problemaV->hora) ?>
-                        &descripcionProblema=<?= urlencode($problemaV->descripcionProblema) ?>"
-                            target="_blank" class="btn btn-danger pdfD">Descargar</a>
-                    </div>
-
-                </div>
-                <?php
-            }
-            ?>
 
             <div class="modal fade" id="modalAtender" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title text-center" id="myModalLabel">Registrar solucion del problema</h5>
+                            <h5 class="modal-title text-center" id="myModalLabel">Mostrar informacion del problema resuelto
+                            </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body " id="atener-body">

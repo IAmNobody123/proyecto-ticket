@@ -1,32 +1,63 @@
-
-ul {
-    padding-left: 0;
-}
-
 .crud {
-
-    flex-wrap: wrap-reverse;
-    align-items: start;
-    justify-content: start;
-display: grid;
-    grid-template-columns: repeat(3, 1fr);
-
+    position: relative;
+    padding: 20px;
+    background-color: rgba(88, 88, 88, 0.3);
+    border-radius: 10px;
+    min-height: 575px;
+    align-content: center;
 }
 
-.card {
-    flex: 0 0 25%;
-    width: 250px;
-    padding: 10px;
-    box-sizing: border-box;
-    height: auto;
-
-
+.crud::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../../img/inka.png');
+    background-size: contain;
+    background-position: center;
+    opacity: 0.8;
+    z-index: -1;
+    background-repeat: no-repeat;
 }
-.card:hover{
-    transform: scale(1.1);
+
+table {
+    margin: auto;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.9);
+    font-weight: bold;
 }
-.footerCard{
-    display: flex;
-    justify-content: space-evenly;
-    
+
+td,
+th {
+    border: 2px ridge #866262 !important;
+    padding: 8px;
+}
+
+.transparent-table {
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.transparent-table th,
+.transparent-table td {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+thead {
+    background: linear-gradient(to right, #b9b9b94d, #505050);
+}
+.textI{
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 25px;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+.botones a{
+    margin: 5px;
 }

@@ -13,16 +13,19 @@ if (isset($_SESSION["nombre"])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Agregar Practicante</title>
-        <link rel="styleSheet" href="../../styleIndex.css?p">
+        <link rel="styleSheet" href="../../styleIndex.css?pss">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
-        <link rel="stylesheet" href="./addPracticante.css?k">
+        <link rel="stylesheet" href="./addPracticante.css?skdd">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 
     <body>
@@ -30,29 +33,30 @@ if (isset($_SESSION["nombre"])) {
         require '../../../../conexion/conexion.php';
         ?>
 
-        <nav class="sidebar">
-            <div class="text">Menu</div>
-            <ul>
-                <li>
-                    <a href="../../index.php" class="feat-btn">Inicio</a>
-                </li>
-                <li class="paginaActual">
-                    <a href="#">Nuevo usuario</a>
-                </li>
-                <li>
-                    <div class="mantenimiento">
-                        <h1 class="tituloM">mantenimiento</h1>
-                        <span class="fas fa-caret-down"></span>
-                    </div>
-                <li><a href="../soporte/indexSoporte.php">Tickets recibidos</a></li>
-                <li><a href="../soporte/layouts/tablaTicketsAsignados.php">Tickets Asignados</a> </li>
-                <li><a href="../soporte/layouts/ticketsResueltos.php">Tickets Resueltos</a></li>
-                <li><a href="../addSede/addSede.php">Sede</a> </li>
-                <li><a href="../addOficina/addOficina.php">Oficina</a></li>
-                <li><a href="../addRoll/addRoll.php">Cargo</a></li>
-                </li>
-            </ul>
-        </nav>
+<nav class="sidebar">
+    <div class="text">Menu</div>
+    <ul>
+        <li>
+            <a href="../../index.php" class="feat-btn"><i class="fa fa-home"></i> Inicio</a>
+        </li>
+        <li class="paginaActual">
+            <a href="#"><i class="fa fa-user-plus"></i> Nuevo usuario</a>
+        </li>
+        <li>
+            <div class="mantenimiento">
+                <h1 class="tituloM"><i class="fa fa-wrench"></i> Mantenimiento</h1>
+            </div>
+        </li>
+        <li><a href="../soporte/indexSoporte.php"><i class="fa fa-ticket"></i> Tickets recibidos</a></li>
+        <li><a href="../soporte/layouts/tablaTicketsAsignados.php"><i class="fa fa-tasks"></i> Tickets Asignados</a></li>
+        <li><a href="../soporte/layouts/ticketsResueltos.php"><i class="fa fa-check-circle"></i> Tickets Resueltos</a></li>
+        <div class="mantenimiento">
+                </div>
+        <li><a href="../addSede/addSede.php"><i class="fa fa-building"></i> Sede</a></li>
+        <li><a href="../addOficina/addOficina.php"><i class="fa fa-briefcase"></i> Oficina</a></li>
+        <li><a href="../addRoll/addRoll.php"><i class="fa fa-id-badge"></i> Cargo</a></li>
+    </ul>
+</nav>
 
         <!-- barra superior -->
         <div class="top-bar" id="welcomeA">
@@ -79,6 +83,8 @@ if (isset($_SESSION["nombre"])) {
                 require 'controlador/roles.php';
                 include 'controlador/eliminarUsuario.php';
                 include 'controlador/filtrar.php';
+                include 'controlador/habilitarU.php';
+                include 'controlador/editarUsuario.php';
 
                 ?>
                 <!-- Modal registrar-->
@@ -178,7 +184,7 @@ if (isset($_SESSION["nombre"])) {
                 <!-- formulario para fitrar -->
                 <form method="POST" class="mb-3" action="">
                     <div class="row">
-                        <div class="col col-4">
+                        <div class="col col-3">
                             <label for="oficina">Oficina:</label>
                             <select name="oficinaS" id="oficina" class="form-select">
                                 <option value="">Todas</option>
@@ -192,7 +198,7 @@ if (isset($_SESSION["nombre"])) {
                                 ?>
                             </select>
                         </div>
-                        <div class="col col-4">
+                        <div class="col col-3">
                             <label for="rolS">Rol:</label> <!-- Cambiado para que coincida con el nuevo ID -->
                             <select name="rolS" id="rolS" class="form-select"> <!-- Cambiado el ID a 'rolS' -->
                                 <option value="">Todos</option>
@@ -204,6 +210,14 @@ if (isset($_SESSION["nombre"])) {
                                     echo "<option value='{$rol->idRol}'>{$rol->nombreRol}</option>";
                                 }
                                 ?>
+                            </select>
+                        </div>
+                        <div class="col col-3">
+                            <label for="estado">estado del Usuario:</label>
+                            <select name="estado" id="estado" class="form-select">
+                                <option value="">Todas</option>
+                                <option value="activo">activo</option>
+                                <option value="inactivo">inactivo</option>
                             </select>
                         </div>
                         <div class="col col-3">
@@ -250,12 +264,80 @@ if (isset($_SESSION["nombre"])) {
                                     <td>
                                         <form method="POST" action="" id="formEliminar<?= $problemaV->idUsuario ?>">
                                             <input type="hidden" name="eliminar" value="<?= $problemaV->idUsuario ?>">
-                                            <!-- <a href="" class="btn btn-warning">editar</a> -->
-                                            <input type="button" value="Eliminar" class="btn btn-danger"
-                                                onclick="confirmarEliminacion(<?= $problemaV->idUsuario ?>)">
+
+                                            <?php
+
+                                            if ($problemaV->estado == "activo") {
+                                                ?>
+                                                <input type="button" value="Deshabilitar" class="btn btn-danger"
+                                                    onclick="confirmarEliminacion(<?= $problemaV->idUsuario ?>)">
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <input type="submit" value="Habilitar" class="btn btn-success" name="habilitarU">
+                                                <?php
+                                            }
+                                            ?>
                                         </form>
+
+
+                                        <a type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editModal<?= $problemaV->idUsuario?>">
+                                            Editar
+                                        </a>
                                     </td>
                                 </tr>
+
+
+                                <div class="modal fade" id="editModal<?= $problemaV->idUsuario?>" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header ">
+                                                <h1 class=" mx-auto" id="exampleModalLabel"
+                                                    style="color: black; font-size:20px; padding-left:80px;">Editar Usuario</h1>
+                                                <button type="button" class="btn-close text-align-end" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <form action="" enctype="multipart/form-data" method="post">
+                                                <div class="modal-body">
+                                                    <input type="text" hidden name="idUsuario" value="<?= $problemaV->idUsuario ?>">
+                                                    <input type="text" hidden name="ruta" value="<?= $problemaV->direccionImagen ?>">
+
+                                                    <div class="form-group">
+                                                        <label for="nombre">Nombre</label>
+                                                        <input type="text" class="form-control" value="<?= $problemaV->nombre ?>" name="nombre" >
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="idLogin">ID Login</label>
+                                                        <input type="text" class="form-control" value="<?= $problemaV->idLogin ?>" name="idLogin"
+                                                            >
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="password">Contraseña</label>
+                                                        <input type="text" class="form-control" value="<?= $problemaV->password ?>" name="password"
+                                                            >
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="imagen">Dirección de Imagen</label>
+                                                        <input type="file" class="form-control" id="direccionImagen"
+                                                            name="imagen" >
+                                                    </div>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Cerrar</button>
+
+                                                    <input type="submit" value="Guardar Cambios" class="btn btn-warning"
+                                                        name="editarU">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                                 <?php
                                 $numero++;
                             }
@@ -265,6 +347,10 @@ if (isset($_SESSION["nombre"])) {
                         ?>
                     </tbody>
                 </table>
+
+
+
+
             </div>
         </div>
 

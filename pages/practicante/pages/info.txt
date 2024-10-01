@@ -1,0 +1,1 @@
+los tickets atendidos tenian otro formato, revisar tarjeta.txt

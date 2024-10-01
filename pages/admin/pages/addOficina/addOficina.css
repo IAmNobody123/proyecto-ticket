@@ -66,5 +66,14 @@ td, th {
 }
 
 thead {
-  background: linear-gradient(to right, white, brown); 
+  background: linear-gradient(to right, #b9b9b94d, #505050);
+
+}
+
+.sidebar ul li a i {
+  margin-right: 25px; /* Espacio entre el ícono y el texto */
+}
+i{
+  margin-right: 25px;
+  color: rgb(11, 202, 186);
 }

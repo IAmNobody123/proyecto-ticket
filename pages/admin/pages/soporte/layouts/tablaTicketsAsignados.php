@@ -12,13 +12,15 @@ if (isset($_SESSION["nombre"])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <link rel="styleSheet" href="../indexSoporte.css?s">
-        <link rel="styleSheet" href="../../stylesGeneral.css?t">
-
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="styleSheet" href="../indexSoporte.css?s">
+        <link rel="styleSheet" href="../../stylesGeneral.css?t">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     </head>
 
     <body>
@@ -33,31 +35,30 @@ if (isset($_SESSION["nombre"])) {
         INNER JOIN sede S ON O.idSede = S.idSede
         inner join tipoProblema tp on tp.idTipoProblema = p.idTipoProblema
         where estadoTicket = 'aceptado' ");
+        include "../controladores/cancelarTicket.php";
         ?>
         <nav class="sidebar">
             <div class="text">Menu</div>
             <ul>
                 <li>
-                    <a href="../../../index.php" class="feat-btn">Inicio</a>
+                    <a href="../../../index.php" class="feat-btn"><i class="fa fa-home"></i>Inicio</a>
                 </li>
                 <li>
-                    <a href="../../addPracticante/addPracticante.php">Nuevo usuario</a>
+                    <a href="../../addPracticante/addPracticante.php"><i class="fa fa-user-plus"></i>Nuevo usuario</a>
                 </li>
                 <li>
                     <div class="mantenimiento">
-                        <h1 class="tituloM">mantenimiento</h1>
-                        <span class="fas fa-caret-down"></span>
+                        <h1 class="tituloM"><i class="fa fa-wrench"></i>Mantenimiento</h1>
                     </div>
-                <li><a href="../indexSoporte.php">Tickets recibidos</a></li>
-                <li class="paginaActual"><a href="#">Tickets Asignados</a> </li>
-                <li><a href="ticketsResueltos.php">Tickets Resueltos</a></li>
-                <li><a href="../../addSede/addSede.php">Sede</a> </li>
-                <li><a href="../../addOficina/addOficina.php">Oficina</a></li>
-                <li><a href="../../addRoll/addRoll.php">Cargo</a></li>
-
-
+                <li><a href="../indexSoporte.php"><i class="fa fa-ticket"></i>Tickets recibidos</a></li>
+                <li class="paginaActual"><a href="#"><i class="fa fa-tasks"></i>Tickets Asignados</a> </li>
+                <li><a href="ticketsResueltos.php"><i class="fa fa-check-circle"></i>Tickets Resueltos</a></li>
+                <div class="mantenimiento">
+                </div>
+                <li><a href="../../addSede/addSede.php"><i class="fa fa-building"></i>Sede</a> </li>
+                <li><a href="../../addOficina/addOficina.php"><i class="fa fa-briefcase"></i>Oficina</a></li>
+                <li><a href="../../addRoll/addRoll.php"><i class="fa fa-id-badge"></i>Cargo</a></li>
                 </li>
-
             </ul>
         </nav>
 
@@ -78,8 +79,9 @@ if (isset($_SESSION["nombre"])) {
             <table class="transparent-table">
                 <thead class="table-secondary text-white">
                     <tr>
-                        <th class="col">Nombre del usuario</th>
-                        <th scope="col">Nombre del practicante</th>
+                    <th class="col">Id del ticket</th>
+                    <th class="col">Nombre del usuario</th>
+                    <th scope="col">Nombre del practicante</th>
                         <th class="col">Motivo</th>
                         <th class="col">fecha de asignacion</th>
                         <th class="col">
@@ -91,32 +93,40 @@ if (isset($_SESSION["nombre"])) {
 
                 <tbody>
                     <?php
-
+                    $numeracion=1;
                     while ($problemaV = $verTicketsAsignados->fetch_object()) {
                         $fechaProblema = new DateTime($problemaV->fechaProblema);
                         $fecha = $fechaProblema->format('Y-m-d');
                         $hora = $fechaProblema->format('H:i:s');
                         ?>
                         <tr>
+                            <td scope="row"><?= $numeracion ?></td>
                             <td scope="row"><?= $problemaV->nombreU ?></td>
-                            <th ><?= $problemaV->nombreP ?></th>
+                            <th><?= $problemaV->nombreP ?></th>
                             <td><?= $problemaV->nombreProblema ?></td>
                             <td><?= $problemaV->fecha ?></td>
                             <td>
                                 <a href="#" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modalDetalle"
                                     data-id-problema="<?= $problemaV->idProblema ?>"
+                                    data-id-ticket="<?= $problemaV->idTicket ?>"
                                     data-nombre-solicitante="<?= $problemaV->nombreU ?>"
                                     data-sede="<?= $problemaV->nombreSede ?>" data-area="<?= $problemaV->nombreOficina ?>"
                                     data-nombre-problema="<?= $problemaV->nombreProblema ?>"
-                                    data-descripcion-problema="<?= $problemaV->descripcionProblema ?>" 
-                                    data-hora="<?= $hora ?>"
+                                    data-descripcion-problema="<?= $problemaV->descripcionProblema ?>" data-hora="<?= $hora ?>"
                                     data-fecha="<?= $fecha ?>" data-hora-asignacion="<?= $problemaV->hora ?>"
                                     data-fecha-asignacion="<?= $problemaV->fecha ?>">
                                     Ver mas detalles
                                 </a>
+                                <form action="" method="POST">
+                                    <input type="hidden" name="ticket" value="<?= $problemaV->idTicket ?>">
+                                    <input type="hidden" name="problema" value="<?= $problemaV->idProblema ?>">
+                                    <input type="hidden" name="usuario" value="<?= $problemaV->idUsuario ?>">
+                                    <input type="submit" value="Cancelar" name="Cancelar" class="btn btn-danger">
+                                </form>
                             </td>
                         </tr>
                         <?php
+                        $numeracion++;
                     }
                     ?>
                 </tbody>
@@ -145,8 +155,29 @@ if (isset($_SESSION["nombre"])) {
                     </div>
                 </div>
             </div>
+
         </div>
         <script>
+            function confirmarCancelar(idTicket) {
+                Swal.fire({
+                    title: '¿Estás seguro de cancelar el ticket?',
+                    text: "¡No podrás revertir esto!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sí, eliminarlo!',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Si el usuario confirma, enviar el formulario
+                        console.log(idTicket);
+                        document.getElementById('formCancelar' + idTicket).submit();
+                        ///no se envia el idTicket
+                    }
+                });
+            };
+
             function setIdProblema(idProblema) {
                 document.getElementById('idProblema').value = idProblema;
             }
@@ -156,6 +187,7 @@ if (isset($_SESSION["nombre"])) {
                 var button = $(event.relatedTarget); // Botón que activó el modal
 
                 var idProblemas = button.data('id-problema');
+                var idTicket = button.data('id-ticket');
                 var nombreSolicitante = button.data('nombre-solicitante');
                 var fechaProblema = button.data('fecha');
                 var horaProblema = button.data('hora');
@@ -168,7 +200,7 @@ if (isset($_SESSION["nombre"])) {
 
                 // Actualizar el contenido del modal
                 var modal = $(this);
-                modal.find('#modalDetalleLabel').html('Detalle del problema NRO:' + idProblemas);
+                modal.find('#modalDetalleLabel').html('TICKET NRO:' + idTicket + '\n PROBLEMA NRO:' + idProblemas);
                 modal.find('#ModalSolicitante').html('<b>Solicitante: </b>' + nombreSolicitante);
                 modal.find('#ModalFecha').html('<b>Fecha de la solicitud: </b>' + fechaProblema);
                 modal.find('#ModalHora').html('<b>Hora de la solicitud: </b>' + horaProblema);

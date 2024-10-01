@@ -198,7 +198,8 @@ nav ul ul li a {
   justify-content: center;
 }
 .card:hover {
-  transform: scale(1.5); /* Aumentar el tamaño al hacer hover */
+  transform: scale(1.3); /* Aumentar el tamaño al hacer hover */
+  background: orange;
 }
 
 #welcomeAdm{

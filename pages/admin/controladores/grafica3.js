@@ -35,8 +35,8 @@
             label: "Atención por Sede",
             data: oficinas,
             backgroundColor: backgroundColors,
-            borderColor: borderColors,
-            borderWidth: 3,
+            borderColor: 'rgba(0, 0, 0, 1)',
+            borderWidth: 1.5,
             maxBarThickness: 25,
             minBarLength: 3,
         };

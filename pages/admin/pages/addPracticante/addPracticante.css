@@ -123,12 +123,12 @@ span {
 }
 
 .tituloM {
-
     color: #e6e6e6;
     padding-left: 25px;
     font-size: 16px;
     padding-right: 20px;
-    padding-top: 10px;
+    padding-top: 25px;
+    font-weight: bold;
 }
 
 nav ul {
@@ -313,10 +313,24 @@ label {
 }
 
 thead {
-    background: linear-gradient(to right, #c548484d, #8a1919);
+    background: linear-gradient(to right, #b9b9b94d, #505050);
 }
 
 .paginaActual {
     background-color: #333;
     border-left: 5px solid white;
+}
+
+.sidebar ul li a {
+    display: flex;
+    align-items: center;
+
+}
+/* ----------------------------------------- */
+.sidebar ul li a i {
+    margin-right: 25px; /* Espacio entre el ícono y el texto */
+}
+i{
+    margin-right: 25px;
+    color: rgb(11, 202, 186);
 }

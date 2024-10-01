@@ -1,0 +1,40 @@
+<?php
+            // while ($problemaV = $verTickets->fetch_object()) {
+        
+            ?>
+            <!-- <div class="card"> -->
+            <!-- <div class="headCard"> -->
+            <!-- <?= $problemaV->idTicket ?> -->
+            <!-- <?= $problemaV->nombreOficina ?> -->
+            <!-- </div> -->
+            <!-- <div class="bodyCard"> -->
+            <!-- <p> <b>Persona que solicito:</b> <?= $problemaV->nombreS ?></p> -->
+
+            <!-- <p><b>Asignado el:</b> <?= $problemaV->fecha ?></p> -->
+
+            <!-- <p><b>En horas:</b> <?= $problemaV->hora ?></p> -->
+            <!-- <p><b>Solucion:</b> <?= $problemaV->descripcion_solucion ?></p> -->
+            <!-- </div> -->
+            <!-- <div class="footerCard"> -->
+            <!-- <a class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modalAtender" -->
+            <!-- data-id-problema="<?= $problemaV->idProblema ?>" data-nombre-solicitante="<?= $problemaV->nombre ?>" -->
+            <!-- data-sede="<?= $problemaV->nombreSede ?>" data-area="<?= $problemaV->nombreOficina ?>" -->
+            <!-- data-nombre-problema="<?= $problemaV->nombreProblema ?>" -->
+            <!-- data-descripcion-problema="<?= $problemaV->descripcionProblema ?>" -->
+            <!-- data-hora="<?= $problemaV->fecha ?>" data-fecha="<?= $problemaV->hora ?>" -->
+            <!-- onclick="setIdTicket('<?= $problemaV->idTicket ?>')">Ver</a> -->
+
+            <!-- <a href="controladores/descargarPDF.php?idTicket=<?= $problemaV->idTicket ?> -->
+            <!-- &nombreS=<?= urlencode($problemaV->nombreS) ?> -->
+            <!-- &fecha=<?= urlencode($problemaV->fecha) ?> -->
+            <!-- &oficina=<?= urlencode($problemaV->nombreOficina) ?> -->
+            <!-- &nombre=<?= urlencode($problemaV->nombre) ?> -->
+            <!-- &hora=<?= urlencode($problemaV->hora) ?>     -->
+            <!-- &descripcionProblema=<?= urlencode($problemaV->descripcionProblema) ?>" -->
+            <!-- target="_blank" class="btn btn-danger pdfD">Descargar</a> -->
+            <!-- </div> -->
+
+            <!-- </div> -->
+            <?php
+            // }
+            ?>

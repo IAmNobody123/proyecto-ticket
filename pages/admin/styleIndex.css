@@ -12,7 +12,7 @@
   width: 245px;
   height: 100%;
   left: 0;
-  background: #681935;
+  background: #505050;
 }
 
 .sidebar .text {
@@ -36,7 +36,7 @@ nav ul {
 
 nav ul li {
   line-height: 60px;
-  border-bottom: 1px solid #000;
+  border: 1px solid #000;
 }
 
 nav ul li a {
@@ -79,14 +79,14 @@ nav ul ul li a {
 
 nav ul li.active ul li a {
   color: #e6e6e6;
-  background-color: #55142f;
+  background-color: #3d3d3d;
   border-left-color: transparent;
 }
 
 nav ul ul li a:hover {
   color: black !important;
   font-weight: 700;
-  background: #681935 !important;
+  background: #222222 !important;
 }
 
 nav ul li a span {
@@ -138,54 +138,70 @@ span {
   padding: 20px;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   gap: 20px;
 }
 
 .div1 {
-  grid-column: span 3 / span 3;
-  grid-row: span 3 / span 3;
-  grid-row-start: 1;
-  grid-column-start: 1;
-  padding-bottom: 0;
+  grid-column: 1 / 7; /* Abarca 3 columnas */
+  grid-row: 1 / 3; /* Ab  arca 1 fila */
+  margin-bottom: 20px;
+  background-color: rgba(228, 221, 219, 0.404);
+  border: 1px solid;
+  border-radius: 20px;
 }
 
 .div2 {
-  grid-column: span 3 / span 3;
-  grid-row: span 3 / span 3;
-  grid-row-start: 1;
-  grid-column-start: 4;
-  padding-bottom: 0;
+  grid-column: 1 / 7; /* Abarca 3 columnas */
+  grid-row: 3 / 5; /* Abarca 1 fila */
+  margin-bottom: 20px;
+  background-color: rgba(228, 221, 219, 0.404);
+  border: 1px solid;
+  border-radius: 20px;
 }
 
 .div3 {
+  grid-column: 1 / 7; /* Abarca 6 columnas */
+  grid-row: 5 / 7; /* Abarca 1 fila */
   padding-top: 0;
-  grid-column: span 6 / span 6;
-  grid-row: span 1 / span 2;
-  grid-row-start: 2;
-  grid-column-start: 1;
+  background-color:rgba(228, 221, 219, 0.404);
+  border: 1px solid;
+  border-radius: 20px;
 }
 /* --------------------------------- */
+#titulo {
+  padding: 20px;
+  margin-left: 280px;
+  text-align: center;
+}
+
 .mantenimiento {
   display: flex;
   align-items: center;
   background-color: #333;
   border-left-color: transparent;
   height: 30px;
-  justify-content: center;
-  padding-bottom: 8px;
+  justify-content: center ;
+
 }
 
 .tituloM {
   color: #e6e6e6;
+  padding-left: 25px;
   font-size: 16px;
   padding-right: 20px;
-  margin: 0;
+  padding-bottom: 15px;
+
 }
-
-
 
 .paginaActual{
   background-color: #333;
   border-left: 5px solid white;
+}
+.sidebar ul li a i {
+  margin-right: 25px; /* Espacio entre el ícono y el texto */
+}
+i{
+  margin-right: 25px;
+  color: rgb(11, 202, 186);
 }

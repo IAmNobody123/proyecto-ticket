@@ -15,9 +15,10 @@ if (isset($_SESSION["nombre"])) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
-        <link rel="styleSheet" href="pages/stylesGeneral.css?6">
-        <link rel="styleSheet" href="./styleIndex.css?6">
+        <link rel="styleSheet" href="pages/stylesGeneral.css?32">
+        <link rel="styleSheet" href="./styleIndex.css?2sd">
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 
     <body>
@@ -25,27 +26,27 @@ if (isset($_SESSION["nombre"])) {
             <div class="text">Menu</div>
             <ul>
                 <li class="paginaActual">
-                    <a href="#" class="feat-btn">inicio</a>
+                    <a href="#" class="feat-btn"><i class="fa fa-home"></i>inicio</a>
                 </li>
                 <li>
-                    <a href="./pages/addPracticante/addPracticante.php">nuevo practicante</a>
+                    <a href="./pages/addPracticante/addPracticante.php"><i class="fa fa-user-plus"></i>Nuevo usuario</a>
                 </li>
                 <li>
                     <div class="mantenimiento">
-                        <h1 class="tituloM">mantenimiento</h1>
-                        <span class="fas fa-caret-down"></span>
+                        <h1 class="tituloM"><i class="fa fa-wrench"></i>Mantenimiento</h1>
                     </div>
-                <li><a href="pages/soporte/indexSoporte.php">Tickets recibidos</a></li>
-                <li><a href="pages/soporte/layouts/tablaTicketsAsignados.php">Tickets Asignados</a> </li>
-                <li><a href="pages/soporte/layouts/ticketsResueltos.php">Tickets Resueltos</a></li>
-                <li><a href="pages/addSede/addSede.php">Sede</a></li>
-                <li><a href="pages/addOficina/addOficina.php">Oficina</a></li>
-                <li><a href="pages/addRoll/addRoll.php">Cargo</a></li>
+                <li><a href="pages/soporte/indexSoporte.php"><i class="fa fa-ticket"></i>Tickets recibidos</a></li>
+                <li><a href="pages/soporte/layouts/tablaTicketsAsignados.php"><i class="fa fa-tasks"></i>Tickets Asignados</a> </li>
+                <li><a href="pages/soporte/layouts/ticketsResueltos.php"><i class="fa fa-check-circle"></i>Tickets Resueltos</a></li>
+                <div class="mantenimiento">
+                </div>
+                <li><a href="pages/addSede/addSede.php"><i class="fa fa-building"></i> Sede</a></li>
+                <li><a href="pages/addOficina/addOficina.php"><i class="fa fa-briefcase"></i> Oficina</a></li>
+                <li><a href="pages/addRoll/addRoll.php"><i class="fa fa-id-badge"></i>Cargo</a></li>
 
                 </li>
             </ul>
         </nav>
-
         <div class="top-bar" id="welcomeA">
             <h1 id="welcomeAdm">Bienvenido Admin</h1>
             <div class="boxshadow" id="dropdownToggle">
@@ -60,6 +61,7 @@ if (isset($_SESSION["nombre"])) {
             <h1 id="titulo">Graficas de soporte tecnico</h1>
 
             <div class="contenido">
+
                 <div class="div1">
                     <canvas class="grafica" width="auto" height="auto"></canvas>
                 </div>

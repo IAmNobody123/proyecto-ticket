@@ -5,7 +5,7 @@ ul {
 .crud {
     display: flex;
     flex-wrap: wrap-reverse;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 .card {
@@ -14,3 +14,4 @@ ul {
     padding: 10px;
     box-sizing: border-box;
 }
+

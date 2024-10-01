@@ -12,7 +12,7 @@
   width: 245px;
   height: 100%;
   left: 0;
-  background: #681935;
+  background: #292929;
 }
 
 .sidebar .text {
@@ -35,8 +35,9 @@ nav ul {
 }
 
 nav ul li {
+  margin: 1px;
   line-height: 60px;
-  border-bottom: 1px solid #000;
+  border: 1px solid #000;
 }
 
 nav ul li a {
@@ -53,6 +54,7 @@ nav ul li a {
 
 nav ul li.active a {
   color: white;
+  border: 1px solid;
   background-color: #333;
   border-left-color: white;
 }
@@ -62,9 +64,7 @@ nav ul ul {
   display: none;
 }
 
-nav ul .feat-show.show {
-  display: block;
-}
+
 
 nav ul ul li {
   line-height: 42px;
@@ -103,7 +103,6 @@ span {
 }
 
 .tituloM {
-
   color: #e6e6e6;
   padding-left: 25px;
   font-size: 16px;
@@ -235,4 +234,30 @@ nav ul {
 }
 label{
   font-weight: bold;
+}
+.mantenimiento {
+  display: flex;
+  align-items: center;
+  background-color: #333;
+  border-left-color: transparent;
+  height: 30px;
+  justify-content: center;
+}
+
+.tituloM {
+  margin-top: 7px;
+  color: #e6e6e6;
+  padding-left: 25px;
+  font-size: 16px;
+  padding-right: 20px;
+  padding-bottom: 5px;
+  font-weight: bold;
+}
+
+.sidebar ul li a i {
+  margin-right: 25px; /* Espacio entre el ícono y el texto */
+}
+i{
+  margin-right: 25px;
+  color: rgb(11, 202, 186);
 }

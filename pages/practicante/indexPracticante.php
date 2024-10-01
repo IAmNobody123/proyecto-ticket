@@ -18,7 +18,7 @@ if (isset($_SESSION["nombre"])) {
          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
       <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
-      <link rel="styleSheet" href="./style.css?g">
+      <link rel="styleSheet" href="./style.css?ñ">
    </head>
 
    <body>
@@ -35,15 +35,23 @@ if (isset($_SESSION["nombre"])) {
          </ul>
       </nav>
 
+      <?php 
+      $direccionImagen = $conexion -> query("SELECT direccionImagen from usuario where idUsuario = $usuarioId");
+      if($imagen = $direccionImagen->fetch_object() ){
+      $dImagen = $imagen -> direccionImagen;
+      ?>
       <div class="top-bar" id="welcomeA">
          <h1 id="welcomeAdm">Bienvenido <?= $usuarioName ?></h1>
          <div class="boxshadow" id="dropdownToggle">
-            <img src='../admin/pages/addPracticante/fotos/<?= $usuarioId; ?>.jpg' alt="">
+            <img src='../admin/pages/addPracticante/<?= $dImagen; ?>' alt="">
          </div>
          <div class="dropdown-menu" id="dropdownMenu">
             <a href="controladores/cerrarSesion.php">Cerrar sesión</a>
          </div>
       </div>
+      <?php 
+      }
+      ?>
 
       <div class="crud">
          <?php
@@ -64,11 +72,13 @@ if (isset($_SESSION["nombre"])) {
                   <?= $problemaV->nombreProblema ?>
                </div>
                <div class="bodyCard">
-                  <p>Lugar: <?= $problemaV->nombreOficina ?></p>
+                  <p><strong>Solicitante:</strong>  <?= $problemaV->nombre ?></p>
 
-                  <p>asignado el: <?= $fechaFormateada ?></p>
+                  <p><strong>Lugar: </strong><?= $problemaV->nombreOficina ?></p>
 
-                  <p>fecha y hora: <?= $problemaV->hora ?></p>
+                  <p><strong>Fecha:</strong> <?= $fechaFormateada ?></p>
+
+                  <p><strong>Hora:</strong> <?= $problemaV->hora ?></p>
                </div>
                <div class="footerCard">
                   <a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAtender"

@@ -1,33 +1,44 @@
 <?php
-if (isset($_POST["submitAtender"])) {
-    if (!empty($_POST["selectorPracticante"]) && !empty($_POST["idProblema"])) {
+if (isset($_POST["submitRAsignar"])) {
+
+    if (!empty($_POST["selectorPracticante"])) {
+        $idTicket = $_POST["idTicket"];
         $idPracticante = $_POST["selectorPracticante"];
-        $idProblema = $_POST["idProblema"]; // Obtener el idProblema
         date_default_timezone_set("America/Lima");
         $fecha = date("Y-m-d");
         $hora = date("H:i:s");
         $requerimiento = "";
         $descripcionSolucion = "";
 
-        // Preparar la consulta SQL
-        $insertarTicket = "INSERT INTO ticket (fecha, hora,requerimiento, descripcion_solucion, idUsuario, idProblema)
-        VALUES (?, ?, ?, ?, ?, ?)";
+        //modificar Ticket 
+        $modificarTicket = "UPDATE ticket set fecha = ? ,hora= ? ,idUsuario= ? ,estadoTicket='aceptado' where idTicket = ?";
 
-        $actualizarEstadoPracticante = "update usuario set tareaAsignada= 'ocupado' where idUsuario=?";
+        $actualizarEstadoPracticante = "UPDATE usuario set tareaAsignada= 'ocupado' where idUsuario=?";
 
-        $actualizarFechaProblema = "update problema set estadoProblema='en proceso', fechaProblemaAceptado = now() where idProblema=?";
+        $idProblema = "SELECT idProblema from ticket where idTicket = $idTicket";
+        $stmtObtenerIdProblema= $conexion->prepare($idProblema);
+        $stmtObtenerIdProblema ->execute();
+        $resultado = $stmtObtenerIdProblema->get_result();
+        if ($resultado->num_rows > 0) {
+            $fila = $resultado->fetch_assoc();
+            $idProblema = $fila['idProblema'];
+        }
+        else{
+            return "algo salio mal";
+        }
+        $actualizarFechaProblema = "UPDATE problema set estadoProblema='en proceso', fechaProblemaAceptado = now() where idProblema=?";
 
-        $stmtInsertarT = $conexion->prepare($insertarTicket);
+        $stmtModificarT = $conexion->prepare($modificarTicket);
         $stmtActualizarEP = $conexion->prepare($actualizarEstadoPracticante);
         $stmtActualizarFP = $conexion->prepare($actualizarFechaProblema);
 
         // Vincular parámetros
-        $stmtInsertarT -> bind_param("ssssii", $fecha, $hora, $requerimiento, $descripcionSolucion, $idPracticante, $idProblema);
+        $stmtModificarT -> bind_param("ssii",$fecha, $hora,$idPracticante,$idTicket );
         $stmtActualizarEP -> bind_param("i", $idPracticante);
         $stmtActualizarFP -> bind_param("i", $idProblema);
 
         // Ejecutar la consulta
-        if ($stmtInsertarT->execute()) {
+        if ($stmtModificarT->execute()) {
             $stmtActualizarEP->execute();
             $stmtActualizarFP->execute();
             echo "
@@ -42,11 +53,11 @@ if (isset($_POST["submitAtender"])) {
         $stmtActualizarFP ->close();
         $resultPracticantes = $conexion->query($sqlPracticantes);
         } else {
-            echo "Error al insertar registro: " . $stmtInsertarT->error;
+            echo "Error al insertar registro: " . $stmtModificarT->error;
         }
 
         // Cerrar la declaración
-        $stmtInsertarT->close();
+        $stmtModificarT->close();
     } else {
         echo "<script>
         Swal.fire({

@@ -16,8 +16,8 @@ if (isset($_POST["btnregistrar"])) {
             echo " <script>
                 Swal.fire({
                     icon: 'success',
-                    title: 'Atención aceptada',
-                    text: 'La atención se ha aceptado correctamente.'
+                    title: 'Solicitud entregada',
+                    text: 'La solicitud se entregó correctamente.'
                 });
             </script>";
         } else {

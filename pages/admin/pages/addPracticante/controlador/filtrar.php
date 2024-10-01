@@ -1,5 +1,5 @@
 <?php
-$sqlQuery = "SELECT * FROM usuario WHERE estado ='activo' ";
+$sqlQuery = "SELECT * FROM usuario WHERE 1 ='1' ";
 
 if (isset($_POST["btnFiltrar"])) {
     if ($_POST["oficinaS"] != '') {
@@ -10,13 +10,16 @@ if (isset($_POST["btnFiltrar"])) {
         $nroRol = intval($_POST['rolS']);
         $sqlQuery .= ' AND idRol = ' . $nroRol;
     }
+    if ($_POST["estado"] != '') {
+        $estadoU = $_POST['estado'];
+        $sqlQuery .= ' AND estado = "' . $estadoU.'"';
+    }
     echo "<script>Swal.fire({
         icon: 'success',
         title: 'Tabla actualizada',
         text: 'la tabla fue actualizada!!'
     });</script>";
 }
-
 // Ejecutar la consulta
 $sql = $conexion->query($sqlQuery);
 
